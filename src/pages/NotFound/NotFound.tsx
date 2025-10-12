@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
-import './NotFound.scss';
+import { PageContainer } from '~/components';
 
 export const NotFound = () => {
   return (
-    <div className="NotFound">
-      <h2>Sorry, this page isn't available.</h2>
-      <p>It may have been moved, or it may have never existed at all.</p>
-      <Link to="/">Go Home</Link>
-    </div>
+    <PageContainer>
+      <h2 className="text-[22px] font-semibold">Sorry, this page isn't available.</h2>
+      <p className="text-base text-gray-light">
+        It may have been moved, or it may have never existed at all.
+      </p>
+      <Link to="/" className="mt-8">
+        Go Home
+      </Link>
+    </PageContainer>
   );
 };

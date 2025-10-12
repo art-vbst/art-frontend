@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ArtCard, ArtViewer, Spinner } from '~/components';
 import { Artwork, ArtworkModel } from '~/api';
-import './Gallery.scss';
 
 export const Gallery = () => {
   const [openArtwork, setOpenArtwork] = React.useState<Artwork | null>(null);
@@ -28,17 +27,17 @@ export const Gallery = () => {
   };
 
   return (
-    <div className="Gallery">
+    <div className="max-w-[1600px] mx-auto flex gap-24 px-12 pb-[50px] max-[1200px]:gap-12 max-[1020px]:gap-8 max-[1020px]:px-4 max-[1020px]:pb-8 max-[720px]:flex-col max-[480px]:gap-4">
       {loading ? (
-        <div className="flex justify-center align-center w-100 pt-8">
+        <div className="flex justify-center items-center w-full pt-8">
           <Spinner />
         </div>
       ) : artworks.length > 0 ? (
         <>
-          <div className="Gallery__left">
+          <div className="flex-1 flex flex-col gap-16 max-[1200px]:gap-12 max-[1020px]:gap-8 max-[480px]:gap-4">
             {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
           </div>
-          <div className="Gallery__right">
+          <div className="flex-1 flex flex-col gap-16 max-[1200px]:gap-12 max-[1020px]:gap-8 max-[480px]:gap-4">
             {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
           </div>
           <ArtViewer
@@ -48,8 +47,8 @@ export const Gallery = () => {
           />
         </>
       ) : (
-        <div className="Gallery__empty">
-          <p>No paintings found</p>
+        <div className="flex-1 flex justify-center items-center mt-[100px]">
+          <p className="text-base text-gray-light italic">No paintings found</p>
         </div>
       )}
     </div>

@@ -4,8 +4,6 @@ import { ShoppingCart } from 'lucide-react';
 import { Artwork, ArtworkModel } from '~/api';
 import { Cart, Navbar } from '~/components';
 import { useCartStore, useTrackClick } from '~/data';
-import '~/index.scss';
-import './layout.scss';
 
 export const Layout = () => {
   const [cartOpen, setCartOpen] = React.useState(false);
@@ -42,22 +40,34 @@ export const Layout = () => {
     window.scrollTo(0, 0);
   }, [location]);
 
+  const location_path = location.pathname;
+  const isSpecialPage =
+    location_path === '/404' ||
+    location_path === '/checkout-return' ||
+    location_path === '/health-check';
+
   return (
-    <div className="Layout">
-      <Navbar onCartOpen={() => setCartOpen(true)} />
+    <div className="w-full min-h-screen flex flex-col relative">
+      <div className={isSpecialPage ? '[&_.Navbar]:animate-boxShadow' : ''}>
+        <Navbar onCartOpen={() => setCartOpen(true)} />
+      </div>
       <div
-        className="Layout__cartBadge"
+        className="z-[100] select-none fixed top-0 right-0 w-[80px] h-[80px] cursor-pointer max-[720px]:hidden"
+        style={{
+          background:
+            'linear-gradient(45deg, transparent, transparent calc(50% - 1px), #eee calc(50% - 1px), #eee calc(50% + 1px), white calc(50% + 1px))',
+        }}
         onClick={() => {
           setCartOpen(true);
           trackCartClick('Cart Badge');
         }}
       >
-        <div className="Layout__cartBadge__data">
-          <ShoppingCart className="Layout__cartBadge__data__icon" />
-          <p className="Layout__cartBadge__data__count">{cart.length}</p>
+        <div className="absolute top-2 right-2 flex items-center justify-center gap-[6px]">
+          <ShoppingCart className="w-5 h-5 text-gray-light stroke-gray-light" />
+          <p className="text-sm font-semibold">{cart.length}</p>
         </div>
       </div>
-      <div className="Layout__content">
+      <div className="flex-1 max-[720px]:mt-[116px] max-[480px]:mt-[100px]">
         <Outlet />
       </div>
       {/* <Footer /> */}

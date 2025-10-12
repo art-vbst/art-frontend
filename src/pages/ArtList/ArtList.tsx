@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArtCard, Spinner } from '~/components';
 import { Artwork, ArtworkModel } from '~/api';
-import './ArtList.scss';
 
 export const ArtList = () => {
   const [artworks, setArtworks] = React.useState<Artwork[]>([]);
@@ -20,28 +19,30 @@ export const ArtList = () => {
 
   const renderArtwork = (artwork: Artwork) => {
     return (
-      <ArtCard key={artwork.id} artwork={artwork} onClick={() => navigate(`/art/${artwork.id}`)} />
+      <div key={artwork.id} className="group">
+        <ArtCard artwork={artwork} onClick={() => navigate(`/art/${artwork.id}`)} />
+      </div>
     );
   };
 
   return (
-    <div className="ArtList">
+    <div className="max-w-[1020px] mx-auto flex gap-32 px-8 pb-[100px] max-[1020px]:gap-16 max-[720px]:flex-col max-[720px]:px-4 max-[720px]:pb-8 max-[720px]:gap-8">
       {loading ? (
-        <div className="flex justify-center align-center w-100 pt-8">
+        <div className="flex justify-center items-center w-full pt-8">
           <Spinner />
         </div>
       ) : artworks.length > 0 ? (
         <>
-          <div className="ArtList__left">
+          <div className="flex-1 flex flex-col gap-24 max-[1020px]:gap-8">
             {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
           </div>
-          <div className="ArtList__right">
+          <div className="flex-1 flex flex-col gap-24 max-[1020px]:gap-8">
             {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
           </div>
         </>
       ) : (
-        <div className="ArtList__empty">
-          <p>No paintings found</p>
+        <div className="flex-1 flex justify-center items-center mt-[100px]">
+          <p className="text-base text-gray-light italic">No paintings found</p>
         </div>
       )}
     </div>
