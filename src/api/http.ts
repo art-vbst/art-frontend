@@ -7,7 +7,7 @@ export const http = axios.create({
   withCredentials: true,
   paramsSerializer: (params) => {
     return qs.stringify(params, { arrayFormat: 'repeat' });
-  }
+  },
 });
 
 export class BaseModel<T> {
@@ -46,7 +46,7 @@ export class BaseModel<T> {
     method: string,
     data: any = {},
     params: any = {},
-    config: any = {}
+    config: any = {},
   ) {
     return http.request({
       url: `${this.endpoint}${id}/${action}`,

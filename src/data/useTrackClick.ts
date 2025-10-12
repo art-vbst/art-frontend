@@ -19,6 +19,6 @@ export const useTrackClick = (eventName: string) => {
         });
       }
     },
-    [eventName]
+    [eventName],
   );
 };

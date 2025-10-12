@@ -20,17 +20,17 @@ export const Layout = () => {
       const cartJSON = localStorage.getItem('cart');
       const cart = cartJSON ? JSON.parse(cartJSON) : [];
 
-      Promise.allSettled(cart.map((item: Artwork) => ArtworkModel.get(item.id).then((artwork) => artwork.data))).then(
-        (artworks) => {
-          const filteredArtworks = artworks
-            .filter(
-              (promise): promise is PromiseFulfilledResult<Artwork> =>
-                promise.status === 'fulfilled' && promise.value.status === 'available'
-            )
-            .map((promise) => promise.value);
-          setCart(filteredArtworks);
-        }
-      );
+      Promise.allSettled(
+        cart.map((item: Artwork) => ArtworkModel.get(item.id).then((artwork) => artwork.data)),
+      ).then((artworks) => {
+        const filteredArtworks = artworks
+          .filter(
+            (promise): promise is PromiseFulfilledResult<Artwork> =>
+              promise.status === 'fulfilled' && promise.value.status === 'available',
+          )
+          .map((promise) => promise.value);
+        setCart(filteredArtworks);
+      });
 
       initialLoadRef.current = false;
     } else {

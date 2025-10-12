@@ -38,7 +38,7 @@ export const ArtCard = ({ artwork, showInfo = true, onClick }: ArtCardProps) => 
       {showInfo && (
         <>
           <h3 className="ArtCard__title">{`"${artwork.title}" ${formatInches(artwork.width_inches)}x${formatInches(
-            artwork.height_inches
+            artwork.height_inches,
           )}`}</h3>
           {artwork.status === 'coming_soon' && <p className="ArtCard__comingSoon">Coming Soon!</p>}
           <p className="ArtCard__price">
