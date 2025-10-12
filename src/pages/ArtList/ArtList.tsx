@@ -20,11 +20,7 @@ export const ArtList = () => {
 
   const renderArtwork = (artwork: Artwork) => {
     return (
-      <ArtCard
-        key={artwork.id}
-        artwork={artwork}
-        onClick={() => navigate(`/art/${artwork.id}`)}
-      />
+      <ArtCard key={artwork.id} artwork={artwork} onClick={() => navigate(`/art/${artwork.id}`)} />
     );
   };
 
@@ -36,8 +32,12 @@ export const ArtList = () => {
         </div>
       ) : artworks.length > 0 ? (
         <>
-          <div className="ArtList__left">{artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}</div>
-          <div className="ArtList__right">{artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}</div>
+          <div className="ArtList__left">
+            {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
+          </div>
+          <div className="ArtList__right">
+            {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
+          </div>
         </>
       ) : (
         <div className="ArtList__empty">

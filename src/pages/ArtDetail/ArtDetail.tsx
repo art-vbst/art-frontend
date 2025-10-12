@@ -67,7 +67,9 @@ export const ArtDetail = () => {
                 key={index}
                 onClick={() => setSelectedImageIndex(index)}
                 className={`ArtDetail__images__thumbnails__thumbnail${
-                  selectedImageIndex === index ? ' ArtDetail__images__thumbnails__thumbnail--selected' : ''
+                  selectedImageIndex === index
+                    ? ' ArtDetail__images__thumbnails__thumbnail--selected'
+                    : ''
                 }`}
               >
                 <img src={image.image_url} alt={artwork.title} />
@@ -109,12 +111,12 @@ export const ArtDetail = () => {
             {artwork.status === 'coming_soon'
               ? 'Coming Soon!'
               : artwork.status === 'not_for_sale'
-              ? 'Not for Sale'
-              : artwork.status === 'sold'
-              ? 'Already Sold'
-              : cart.some((item) => item.id === artwork.id)
-              ? 'Added to Cart!'
-              : 'Add to Cart'}
+                ? 'Not for Sale'
+                : artwork.status === 'sold'
+                  ? 'Already Sold'
+                  : cart.some((item) => item.id === artwork.id)
+                    ? 'Added to Cart!'
+                    : 'Add to Cart'}
           </button>
         </div>
       </div>

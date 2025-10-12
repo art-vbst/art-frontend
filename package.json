@@ -5,15 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "tsc -b --watch & vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@sentry/react": "^10.19.0",
     "@stripe/react-stripe-js": "^5.2.0",
     "@stripe/stripe-js": "^8.0.0",
+    "@tailwindcss/vite": "^4.1.14",
     "axios": "^1.12.2",
     "lucide-react": "^0.545.0",
     "qs": "^6.14.0",
@@ -21,6 +21,7 @@
     "react-dom": "^19.2.0",
     "react-router": "^7.9.4",
     "react-router-dom": "^7.9.4",
+    "tailwindcss": "^4.1.14",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-refresh": "^0.4.23",
     "globals": "^16.4.0",
+    "prettier": "^3.6.2",
     "sass": "^1.93.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.0",

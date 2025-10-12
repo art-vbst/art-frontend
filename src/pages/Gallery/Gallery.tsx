@@ -35,9 +35,17 @@ export const Gallery = () => {
         </div>
       ) : artworks.length > 0 ? (
         <>
-          <div className="Gallery__left">{artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}</div>
-          <div className="Gallery__right">{artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}</div>
-          <ArtViewer artwork={openArtwork} open={!!openArtwork} onClose={() => setOpenArtwork(null)} />
+          <div className="Gallery__left">
+            {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
+          </div>
+          <div className="Gallery__right">
+            {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
+          </div>
+          <ArtViewer
+            artwork={openArtwork}
+            open={!!openArtwork}
+            onClose={() => setOpenArtwork(null)}
+          />
         </>
       ) : (
         <div className="Gallery__empty">

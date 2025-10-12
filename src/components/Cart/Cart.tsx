@@ -74,7 +74,10 @@ export const Cart = (props: CartProps) => {
                   </h3>
                   <span className="Cart__item__details__info">
                     <p className="Cart__item__details__price">{centsToDollars(item.price_cents)}</p>
-                    <a className="Cart__item__details__remove" onClick={() => removeFromCart(item.id)}>
+                    <a
+                      className="Cart__item__details__remove"
+                      onClick={() => removeFromCart(item.id)}
+                    >
                       Remove
                     </a>
                   </span>

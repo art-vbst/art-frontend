@@ -11,4 +11,5 @@ const mediumChoices = [
   { key: 'unknown', value: 'Unknown' },
 ];
 
-export const getMedium = (medium: string) => mediumChoices.find((choice) => choice.key === medium)?.value || medium;
+export const getMedium = (medium: string) =>
+  mediumChoices.find((choice) => choice.key === medium)?.value || medium;
