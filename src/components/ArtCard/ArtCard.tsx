@@ -17,8 +17,8 @@ export const ArtCard = ({ artwork, showInfo = true, onClick }: ArtCardProps) => 
   const height = mainImage?.image_height;
 
   return (
-    <div className="flex flex-col items-center cursor-pointer" onClick={onClick}>
-      <div className="w-full relative after:absolute after:inset-0 after:bg-transparent after:transition-colors group-hover:after:bg-white/15">
+    <div className="flex cursor-pointer flex-col items-center" onClick={onClick}>
+      <div className="relative w-full">
         {width && height && !srcLoaded && (
           <ShimmerPlaceholder
             style={{
@@ -37,11 +37,11 @@ export const ArtCard = ({ artwork, showInfo = true, onClick }: ArtCardProps) => 
       </div>
       {showInfo && (
         <>
-          <h3 className="text-2xl font-semibold text-center mt-6">{`"${artwork.title}" ${formatInches(artwork.width_inches)}x${formatInches(
+          <h3 className="mt-6 text-center text-2xl font-semibold">{`"${artwork.title}" ${formatInches(artwork.width_inches)}x${formatInches(
             artwork.height_inches,
           )}`}</h3>
-          {artwork.status === 'coming_soon' && <p className="text-blue-600 mt-4">Coming Soon!</p>}
-          <p className="text-gray-light text-sm mt-2">
+          {artwork.status === 'coming_soon' && <p className="mt-4 text-blue-600">Coming Soon!</p>}
+          <p className="text-gray-light mt-2 text-sm">
             {Number(artwork.price_cents / 100).toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD',

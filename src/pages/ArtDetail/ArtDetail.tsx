@@ -42,8 +42,8 @@ export const ArtDetail = () => {
 
   if (loading) {
     return (
-      <div className="max-w-[1140px] mx-auto px-8 pb-8 box-border w-full max-[1020px]:px-4 max-[1020px]:pb-8">
-        <div className="flex justify-center items-center w-full pt-8">
+      <div className="mx-auto box-border w-full max-w-[1140px] px-8 pb-8 max-[1020px]:px-4 max-[1020px]:pb-8">
+        <div className="flex w-full items-center justify-center pt-8">
           <Spinner />
         </div>
       </div>
@@ -53,39 +53,39 @@ export const ArtDetail = () => {
   if (!artwork || notFound) return <NotFound />;
 
   return (
-    <div className="max-w-[1140px] mx-auto px-8 pb-8 box-border w-full max-[1020px]:px-4 max-[1020px]:pb-8">
-      <Link to="/" className="mb-8 flex items-center gap-2 no-underline text-sm max-[720px]:my-4">
+    <div className="mx-auto box-border w-full max-w-[1140px] px-8 pb-8 max-[1020px]:px-4 max-[1020px]:pb-8">
+      <Link to="/" className="mb-8 flex items-center gap-2 text-sm no-underline max-[720px]:my-4">
         <ChevronLeft />
         <p>Back to Store</p>
       </Link>
-      <div className="w-full flex gap-8 max-[1020px]:flex-col">
-        <div className="flex-1 flex gap-4 w-full max-[720px]:flex-[unset] max-[720px]:flex-col-reverse max-[720px]:w-full max-[720px]:overflow-hidden">
-          <div className="flex-[1_1_70px] max-w-[80px] flex flex-col gap-[2px] max-[720px]:max-w-full max-[720px]:flex-row max-[720px]:flex-wrap max-[720px]:justify-start max-[720px]:w-full max-[720px]:overflow-hidden">
+      <div className="flex w-full gap-8 max-[1020px]:flex-col">
+        <div className="flex w-full flex-1 gap-4 max-[720px]:w-full max-[720px]:flex-[unset] max-[720px]:flex-col-reverse max-[720px]:overflow-hidden">
+          <div className="flex max-w-[80px] flex-[1_1_70px] flex-col gap-[2px] max-[720px]:w-full max-[720px]:max-w-full max-[720px]:flex-row max-[720px]:flex-wrap max-[720px]:justify-start max-[720px]:overflow-hidden">
             {artwork.images.map((image, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedImageIndex(index)}
-                className={`max-h-20 max-w-20 min-w-20 cursor-pointer relative after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-white/50 after:transition-[background-color] after:duration-200 after:ease hover:after:bg-transparent max-[720px]:shrink-0 ${
+                className={`after:ease relative max-h-20 max-w-20 min-w-20 cursor-pointer after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-white/50 after:transition-[background-color] after:duration-200 after:content-[''] hover:after:bg-transparent max-[720px]:shrink-0 ${
                   selectedImageIndex === index ? 'after:!bg-transparent' : ''
                 }`}
               >
                 <img
                   src={image.image_url}
                   alt={artwork.title}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             ))}
           </div>
-          <div className="flex-[1_1_500px] w-full max-[720px]:flex-[unset] max-[720px]:w-full">
+          <div className="w-full flex-[1_1_500px] max-[720px]:w-full max-[720px]:flex-[unset]">
             <img
               src={artwork.images[selectedImageIndex]?.image_url}
               alt={artwork.title}
-              className="w-full h-auto max-w-full block"
+              className="block h-auto w-full max-w-full"
             />
           </div>
         </div>
-        <div className="flex-1 flex flex-col gap-6 max-[720px]:flex-[unset] max-[720px]:w-full">
+        <div className="flex flex-1 flex-col gap-6 max-[720px]:w-full max-[720px]:flex-[unset]">
           <h1 className="text-[30px] font-normal max-[720px]:break-words max-[720px]:[hyphens:auto] min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
             {artwork.title}
           </h1>
@@ -95,16 +95,16 @@ export const ArtDetail = () => {
               currency: 'USD',
             })} USD`}
           </p>
-          <p className="text-[13px] text-gray-light max-[720px]:break-words max-[720px]:max-w-full min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
+          <p className="text-gray-light text-[13px] max-[720px]:max-w-full max-[720px]:break-words min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
             Unframed original painting.
           </p>
-          <p className="text-[13px] text-gray-light max-[720px]:break-words max-[720px]:max-w-full min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
+          <p className="text-gray-light text-[13px] max-[720px]:max-w-full max-[720px]:break-words min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
             Medium: {getMedium(artwork.medium)}
           </p>
-          <p className="text-[13px] text-gray-light max-[720px]:break-words max-[720px]:max-w-full min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
+          <p className="text-gray-light text-[13px] max-[720px]:max-w-full max-[720px]:break-words min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
             Size: {Number(artwork.width_inches)}" x {Number(artwork.height_inches)}"
           </p>
-          <p className="text-[13px] text-gray-light max-[720px]:break-words max-[720px]:max-w-full min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
+          <p className="text-gray-light text-[13px] max-[720px]:max-w-full max-[720px]:break-words min-[481px]:max-[484px]:max-w-[calc(100vw-4rem)]">
             Stephanie Bergeson{artwork.painting_year ? `, ${artwork.painting_year}` : ''}
           </p>
           <Button

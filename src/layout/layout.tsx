@@ -41,18 +41,18 @@ export const Layout = () => {
   }, [location]);
 
   const location_path = location.pathname;
-  const isSpecialPage =
+  const isNonstandardPage =
     location_path === '/404' ||
     location_path === '/checkout-return' ||
     location_path === '/health-check';
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className={isSpecialPage ? '[&_.Navbar]:animate-boxShadow' : ''}>
+    <div className="flex min-h-screen flex-col">
+      <div className={isNonstandardPage ? '[&_.Navbar]:animate-boxShadow' : ''}>
         <Navbar onCartOpen={() => setCartOpen(true)} />
       </div>
       <div
-        className="fixed top-0 right-0 w-20 h-20 z-50 cursor-pointer md:block hidden"
+        className="fixed top-0 right-0 z-50 hidden h-20 w-20 cursor-pointer md:block"
         style={{
           background:
             'linear-gradient(45deg, transparent, transparent calc(50% - 1px), #eee calc(50% - 1px), #eee calc(50% + 1px), white calc(50% + 1px))',
@@ -63,14 +63,11 @@ export const Layout = () => {
         }}
       >
         <div className="absolute top-2 right-2 flex items-center gap-2">
-          <ShoppingCart className="w-5 h-5 text-gray-light" />
+          <ShoppingCart className="text-gray-light h-5 w-5" />
           <p className="text-sm font-semibold">{cart.length}</p>
         </div>
       </div>
-      <div className="flex-1 md:mt-0 mt-28">
-        <Outlet />
-      </div>
-      {/* <Footer /> */}
+      <Outlet />
       <Cart items={cart} isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );

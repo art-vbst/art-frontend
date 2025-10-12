@@ -1,3 +1,3 @@
 export const Footer = () => {
-  return <div className="w-full bg-gray-dark py-8"></div>;
+  return <div className="bg-gray-dark w-full py-8"></div>;
 };

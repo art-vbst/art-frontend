@@ -6,8 +6,8 @@ export const About = () => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
-      <div className="flex gap-8 mb-12 md:flex-row flex-col">
+    <div className="mx-auto max-w-6xl p-8">
+      <div className="mb-12 flex flex-col gap-8 md:flex-row">
         <div className="flex-1">
           {!imageLoaded && <ShimmerPlaceholder aspectRatio="569/319" />}
           <img
@@ -18,9 +18,9 @@ export const About = () => {
             className="w-full object-cover"
           />
         </div>
-        <div className="flex-1 flex flex-col gap-2">
+        <div className="flex flex-1 flex-col gap-2">
           <h2 className="text-xl font-semibold">Stephanie Bee Studio</h2>
-          <p className="text-sm text-gray-light mt-4">Connect with me on Instagram!</p>
+          <p className="text-gray-light mt-4 text-sm">Connect with me on Instagram!</p>
           <a
             href="https://www.instagram.com/stephanie_bee_studio"
             target="_blank"
@@ -31,10 +31,10 @@ export const About = () => {
           </a>
         </div>
       </div>
-      <div className="flex gap-12 md:flex-row flex-col">
-        <div className="flex-1 flex flex-col gap-4">
+      <div className="flex flex-col gap-12 md:flex-row">
+        <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">Biography</h3>
-          <p className="text-sm text-gray-light leading-relaxed">
+          <p className="text-gray-light text-sm leading-relaxed">
             I was born and raised in Canada, near the rocky mountains. As an adult I have lived in
             several states including Hawaii, Louisiana, Virginia, and Texas. While there were things
             I enjoyed about each of these places, I'm happy I found my way back to the mountains,
@@ -42,9 +42,9 @@ export const About = () => {
             beautiful outdoors with my husband and four children.
           </p>
         </div>
-        <div className="flex-1 flex flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">My Beginnings in Art</h3>
-          <p className="text-sm text-gray-light leading-relaxed">
+          <p className="text-gray-light text-sm leading-relaxed">
             I have always loved to draw and remember being very inspired as a 5 year old,
             overhearing a proud grandma brag about how her grandson could draw whatever he wanted
             just from his imagination. As a teen I took lessons from a watercolor artist in my
@@ -52,9 +52,9 @@ export const About = () => {
             of submitting a portfolio and got my bachelor's degree in history and German instead.
           </p>
         </div>
-        <div className="flex-1 flex flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">Recent Developments</h3>
-          <p className="text-sm text-gray-light leading-relaxed">
+          <p className="text-gray-light text-sm leading-relaxed">
             I started studying art more seriously in 2022 after my youngest son was born. I've had
             the privilege of learning from artists like Emily Fox King, Andrew Payne, and Kirk
             Richards at the J. Kirk Richards Studio Academy over the past few years.
