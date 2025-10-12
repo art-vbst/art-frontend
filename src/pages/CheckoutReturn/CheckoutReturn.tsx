@@ -5,12 +5,9 @@ import './CheckoutReturn.scss';
 
 export const CheckoutReturn = () => {
   const navigate = useNavigate();
-
   const { setCart } = useCartStore();
 
-  React.useEffect(() => {
-    setCart([]);
-  }, []);
+  React.useEffect(() => setCart([]), []);
 
   return (
     <div className="CheckoutReturn">

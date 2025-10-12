@@ -70,12 +70,12 @@ export const ArtDetail = () => {
                   selectedImageIndex === index ? ' ArtDetail__images__thumbnails__thumbnail--selected' : ''
                 }`}
               >
-                <img src={image.image} alt={artwork.title} />
+                <img src={image.image_url} alt={artwork.title} />
               </div>
             ))}
           </div>
           <div className="ArtDetail__images__main">
-            <img src={artwork.images[selectedImageIndex]?.image} alt={artwork.title} />
+            <img src={artwork.images[selectedImageIndex]?.image_url} alt={artwork.title} />
           </div>
         </div>
         <div className="ArtDetail__info">

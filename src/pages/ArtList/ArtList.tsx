@@ -24,7 +24,6 @@ export const ArtList = () => {
         key={artwork.id}
         artwork={artwork}
         onClick={() => navigate(`/art/${artwork.id}`)}
-        dimensions={artwork.image_dimensions}
       />
     );
   };
