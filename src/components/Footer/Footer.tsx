@@ -1,5 +1,3 @@
-import './Footer.scss';
-
 export const Footer = () => {
-  return <div className="Footer"></div>;
+  return <div className="w-full bg-gray-dark py-8"></div>;
 };

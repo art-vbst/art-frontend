@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '~/data';
-import './CheckoutReturn.scss';
+import { Button, PageContainer } from '~/components';
 
 export const CheckoutReturn = () => {
   const navigate = useNavigate();
@@ -10,12 +10,14 @@ export const CheckoutReturn = () => {
   React.useEffect(() => setCart([]), []);
 
   return (
-    <div className="CheckoutReturn">
-      <h2>Order Successful!</h2>
-      <p>Your order has been received! A confirmation email will be sent to your email address.</p>
-      <button className="CheckoutReturn__button" onClick={() => navigate('/')}>
+    <PageContainer>
+      <h2 className="text-[22px] font-semibold">Order Successful!</h2>
+      <p className="text-base text-gray-light">
+        Your order has been received! A confirmation email will be sent to your email address.
+      </p>
+      <Button className="mt-8" onClick={() => navigate('/')}>
         Continue shopping
-      </button>
-    </div>
+      </Button>
+    </PageContainer>
   );
 };

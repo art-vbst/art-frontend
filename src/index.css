@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+* {
+  margin: unset;
+  color: #222;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  padding: unset;
+}
+
+html:has(.Cart) {
+  overflow: hidden;
+}
+
+body {
+  padding: unset;
+}
