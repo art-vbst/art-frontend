@@ -25,36 +25,34 @@ export const Navbar = ({ onCartOpen }: NavbarProps) => {
   }, []);
 
   return (
-    <div className="max-[720px]:fixed max-[720px]:top-0 max-[720px]:left-0 max-[720px]:w-full max-[720px]:z-[100] max-[720px]:shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
-      <div className="Navbar bg-white py-10 pb-[50px] flex flex-col items-center gap-9 relative z-[100] max-[720px]:py-8">
-        <h1 className="text-[32px] font-semibold text-center max-[720px]:text-[28px] max-[480px]:self-start max-[480px]:text-left max-[480px]:pl-4 max-[480px]:text-[22px] max-[340px]:text-[20px]">
-          Stephanie Bee Studio
-        </h1>
-        <div className="flex items-center gap-11 max-[720px]:hidden">
+    <div className="md:relative fixed top-0 left-0 w-full z-50 md:shadow-none shadow-md">
+      <div className="Navbar bg-white py-10 flex flex-col items-center gap-9 relative">
+        <h1 className="text-3xl font-semibold text-center md:text-left">Stephanie Bee Studio</h1>
+        <div className="md:flex hidden items-center gap-11">
           <NavLink
             to="/"
             onClick={() => trackNavClick('Available Artwork')}
-            className="font-mono text-sm text-gray-light no-underline transition-colors duration-100 select-none hover:text-gray-dark [&.active]:text-gray-dark"
+            className="font-mono text-sm text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             Available Artwork
           </NavLink>
           <NavLink
             to="/about"
             onClick={() => trackNavClick('About')}
-            className="font-mono text-sm text-gray-light no-underline transition-colors duration-100 select-none hover:text-gray-dark [&.active]:text-gray-dark"
+            className="font-mono text-sm text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             About
           </NavLink>
           <NavLink
             to="/gallery"
             onClick={() => trackNavClick('Gallery')}
-            className="font-mono text-sm text-gray-light no-underline transition-colors duration-100 select-none hover:text-gray-dark [&.active]:text-gray-dark"
+            className="font-mono text-sm text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             Gallery
           </NavLink>
         </div>
         <button
-          className="bg-transparent border-none cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 hidden items-center justify-center z-[999] max-[720px]:flex"
+          className="md:hidden absolute right-4 top-1/2 -translate-y-1/2"
           onClick={() => setMenuOpen((p) => !p)}
         >
           {menuOpen ? <X /> : <Menu />}
@@ -86,35 +84,32 @@ const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
 
   return (
     <>
-      <div
-        className="fixed top-0 left-0 w-full h-screen z-[90] bg-black/50 animate-fadeIn"
-        onClick={onClose}
-      />
-      <div className="absolute top-full left-0 w-full z-[99] flex flex-col animate-slideFromTop">
-        <div className="shadow-[0_4px_16px_rgba(0,0,0,0.2)] bg-white relative flex flex-col items-center gap-6 py-2 px-4 pb-8 font-mono">
+      <div className="fixed inset-0 bg-black/50 z-40 animate-fadeIn" onClick={onClose} />
+      <div className="absolute top-full left-0 w-full z-50 animate-slideFromTop">
+        <div className="bg-white shadow-xl p-6 flex flex-col items-center gap-6 font-mono">
           <NavLink
             to="/"
             onClick={() => handleLinkClick('Available Artwork')}
-            className="text-gray-light no-underline text-base transition-colors duration-200 select-none hover:text-gray-dark [&.active]:text-gray-dark"
+            className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             Available Artwork
           </NavLink>
           <NavLink
             to="/about"
             onClick={() => handleLinkClick('About')}
-            className="text-gray-light no-underline text-base transition-colors duration-200 select-none hover:text-gray-dark [&.active]:text-gray-dark"
+            className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             About
           </NavLink>
           <NavLink
             to="/gallery"
             onClick={() => handleLinkClick('Gallery')}
-            className="text-gray-light no-underline text-base transition-colors duration-200 select-none hover:text-gray-dark [&.active]:text-gray-dark"
+            className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             Gallery
           </NavLink>
           <button
-            className="bg-gray-dark border-none rounded-lg py-3 px-8 cursor-pointer text-white text-base font-[inherit] transition-all duration-200 hover:bg-gray-dark/80"
+            className="bg-gray-dark text-white rounded-lg py-3 px-8 hover:bg-gray-dark/80"
             onClick={() => {
               onClose();
               onCartOpen();

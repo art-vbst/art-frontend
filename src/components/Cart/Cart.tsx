@@ -36,32 +36,23 @@ export const Cart = (props: CartProps) => {
 
   return (
     <>
-      <div
-        className="fixed top-0 left-0 w-full h-full bg-black/50 z-[999] animate-fadeIn"
-        onClick={props.onClose}
-      />
-      <div className="fixed top-0 right-0 w-[500px] max-w-full py-6 h-[calc(100vh-48px)] h-[calc(100dvh-48px)] bg-white shadow-[-2px_0_8px_rgba(0,0,0,0.1)] z-[1000] flex flex-col animate-slideFromRight">
-        <div className="px-6 flex justify-between items-center mb-6">
+      <div className="fixed inset-0 bg-black/50 z-40 animate-fadeIn" onClick={props.onClose} />
+      <div className="fixed top-0 right-0 w-full max-w-lg h-screen bg-white shadow-xl z-50 flex flex-col animate-slideFromRight">
+        <div className="p-6 flex justify-between items-center border-b">
           <span className="flex items-center gap-3">
             <ShoppingCart />
-            <h2 className="m-0 text-2xl font-semibold">Shopping Cart</h2>
+            <h2 className="text-2xl font-semibold">Shopping Cart</h2>
           </span>
-          <button
-            className="bg-transparent border-none cursor-pointer p-2 flex items-center justify-center transition-opacity duration-200 hover:opacity-70"
-            onClick={props.onClose}
-          >
+          <button className="p-2 hover:opacity-70" onClick={props.onClose}>
             <X />
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto min-h-0">
+        <div className="flex-1 overflow-y-auto">
           {props.items.length === 0 ? (
-            <p className="m-0 text-base text-gray-light px-6">Your cart is empty.</p>
+            <p className="p-6 text-gray-light">Your cart is empty.</p>
           ) : (
             props.items.map((item) => (
-              <div
-                key={item.id}
-                className="flex gap-4 py-4 mx-6 border-b border-[#eee] last:border-b-0"
-              >
+              <div key={item.id} className="flex gap-4 p-6 border-b last:border-b-0">
                 <img
                   src={item.images[0]?.image_url}
                   alt={item.title}
@@ -71,9 +62,9 @@ export const Cart = (props: CartProps) => {
                     navigate(`/art/${item.id}`);
                   }}
                 />
-                <div className="flex flex-col justify-center gap-2">
+                <div className="flex flex-col gap-2">
                   <h3
-                    className="m-0 text-base font-medium cursor-pointer"
+                    className="font-medium cursor-pointer"
                     onClick={() => {
                       props.onClose();
                       navigate(`/art/${item.id}`);
@@ -81,29 +72,26 @@ export const Cart = (props: CartProps) => {
                   >
                     {item.title}
                   </h3>
-                  <span className="flex items-center gap-4">
-                    <p className="m-0 text-sm text-[#666]">{centsToDollars(item.price_cents)}</p>
-                    <a
-                      className="text-red-600 cursor-pointer no-underline text-sm"
-                      onClick={() => removeFromCart(item.id)}
-                    >
+                  <div className="flex items-center gap-4 text-sm">
+                    <p className="text-gray-600">{centsToDollars(item.price_cents)}</p>
+                    <button className="text-red-600" onClick={() => removeFromCart(item.id)}>
                       Remove
-                    </a>
-                  </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))
           )}
         </div>
-        <div className="pt-8 px-6 border-t border-[#eee] flex flex-col items-end gap-8">
-          <span className="flex gap-4">
-            <p className="text-base text-gray-light">Subtotal:</p>
-            <p className="text-base font-semibold">
+        <div className="p-6 border-t flex flex-col gap-6">
+          <div className="flex justify-between">
+            <p className="text-gray-light">Subtotal:</p>
+            <p className="font-semibold">
               {centsToDollars(props.items.reduce((acc, item) => acc + item.price_cents, 0))}
             </p>
-          </span>
+          </div>
           <button
-            className="w-full py-3 px-4 rounded text-base font-medium bg-transparent text-gray-dark border border-gray-dark cursor-pointer transition-all duration-200 hover:bg-gray-dark hover:text-white active:bg-gray-dark/90 disabled:text-[#aaa] disabled:border-[#aaa] disabled:cursor-not-allowed disabled:hover:bg-transparent"
+            className="w-full py-3 rounded border border-gray-dark hover:bg-gray-dark hover:text-white disabled:opacity-50"
             disabled={props.items.length === 0 || loading}
             onClick={handleCheckout}
           >
