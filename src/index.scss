@@ -1,5 +1,5 @@
-@use 'src/scss/variables.scss' as *;
-@use 'src/scss/utils.scss' as *;
+@use './scss/variables' as *;
+@use './scss/utils' as *;
 
 * {
   margin: unset;
