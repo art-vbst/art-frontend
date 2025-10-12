@@ -11,8 +11,8 @@ export const CheckoutReturn = () => {
 
   return (
     <PageContainer>
-      <h2 className="text-[22px] font-semibold">Order Successful!</h2>
-      <p className="text-base text-gray-light">
+      <h2 className="text-xl font-semibold">Order Successful!</h2>
+      <p className="text-gray-light">
         Your order has been received! A confirmation email will be sent to your email address.
       </p>
       <Button className="mt-8" onClick={() => navigate('/')}>

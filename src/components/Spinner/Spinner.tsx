@@ -6,9 +6,9 @@ type SpinnerProps = {
 
 export const Spinner = ({ width = 64, height = 64, text }: SpinnerProps) => {
   return (
-    <div className="flex items-center justify-center flex-col gap-4">
+    <div className="flex flex-col items-center gap-4">
       <div
-        className="rounded-full animate-spin border-solid border-[5px] border-[#eee_#eee_transparent_transparent]"
+        className="rounded-full animate-spin border-4 border-gray-200 border-t-transparent"
         style={{ width: `${width}px`, height: `${height}px` }}
       />
       {text && <p className="text-gray-light">{text}</p>}

@@ -47,12 +47,12 @@ export const Layout = () => {
     location_path === '/health-check';
 
   return (
-    <div className="w-full min-h-screen flex flex-col relative">
+    <div className="min-h-screen flex flex-col">
       <div className={isSpecialPage ? '[&_.Navbar]:animate-boxShadow' : ''}>
         <Navbar onCartOpen={() => setCartOpen(true)} />
       </div>
       <div
-        className="z-[100] select-none fixed top-0 right-0 w-[80px] h-[80px] cursor-pointer max-[720px]:hidden"
+        className="fixed top-0 right-0 w-20 h-20 z-50 cursor-pointer md:block hidden"
         style={{
           background:
             'linear-gradient(45deg, transparent, transparent calc(50% - 1px), #eee calc(50% - 1px), #eee calc(50% + 1px), white calc(50% + 1px))',
@@ -62,12 +62,12 @@ export const Layout = () => {
           trackCartClick('Cart Badge');
         }}
       >
-        <div className="absolute top-2 right-2 flex items-center justify-center gap-[6px]">
-          <ShoppingCart className="w-5 h-5 text-gray-light stroke-gray-light" />
+        <div className="absolute top-2 right-2 flex items-center gap-2">
+          <ShoppingCart className="w-5 h-5 text-gray-light" />
           <p className="text-sm font-semibold">{cart.length}</p>
         </div>
       </div>
-      <div className="flex-1 max-[720px]:mt-[116px] max-[480px]:mt-[100px]">
+      <div className="flex-1 md:mt-0 mt-28">
         <Outlet />
       </div>
       {/* <Footer /> */}
