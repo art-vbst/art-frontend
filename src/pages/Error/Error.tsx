@@ -7,7 +7,7 @@ export const Error = () => {
       <h2 className="text-xl font-semibold">An error occurred.</h2>
       <p className="text-gray-light">Please try again later.</p>
       <button
-        className="mt-8 py-3 px-6 rounded bg-gray-dark text-white"
+        className="bg-gray-dark mt-8 rounded px-6 py-3 text-white"
         onClick={() => Sentry.showReportDialog()}
       >
         Report feedback

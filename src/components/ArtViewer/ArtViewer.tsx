@@ -12,7 +12,7 @@ export const ArtViewer = ({ artwork, open, onClose }: ArtViewerProps) => {
 
   return (
     <div
-      className="fixed inset-0 bg-white/90 flex items-center justify-center z-50 animate-fadeIn-slow"
+      className="animate-fadeIn-slow fixed inset-0 z-50 flex items-center justify-center bg-white/90"
       onClick={onClose}
     >
       <div className="relative flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
@@ -22,9 +22,9 @@ export const ArtViewer = ({ artwork, open, onClose }: ArtViewerProps) => {
         <img
           src={artwork.images[0].image_url}
           alt={artwork.title}
-          className="max-w-[90vw] max-h-[80vh]"
+          className="max-h-[80vh] max-w-[90vw]"
         />
-        <h2 className="mt-8 text-gray-light">{artwork.title}</h2>
+        <h2 className="text-gray-light mt-8">{artwork.title}</h2>
       </div>
     </div>
   );

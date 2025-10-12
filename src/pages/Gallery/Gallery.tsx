@@ -27,18 +27,18 @@ export const Gallery = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
+    <div className="mx-auto max-w-7xl p-8">
       {loading ? (
         <div className="flex justify-center pt-8">
           <Spinner />
         </div>
       ) : artworks.length > 0 ? (
         <>
-          <div className="flex gap-16 md:flex-row flex-col">
-            <div className="flex-1 flex flex-col gap-16">
+          <div className="flex flex-col gap-16 md:flex-row">
+            <div className="flex flex-1 flex-col gap-16">
               {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
             </div>
-            <div className="flex-1 flex flex-col gap-16">
+            <div className="flex flex-1 flex-col gap-16">
               {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
             </div>
           </div>
@@ -49,7 +49,7 @@ export const Gallery = () => {
           />
         </>
       ) : (
-        <div className="flex justify-center items-center mt-24">
+        <div className="mt-24 flex items-center justify-center">
           <p className="text-gray-light italic">No paintings found</p>
         </div>
       )}

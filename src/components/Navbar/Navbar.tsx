@@ -25,34 +25,34 @@ export const Navbar = ({ onCartOpen }: NavbarProps) => {
   }, []);
 
   return (
-    <div className="md:relative fixed top-0 left-0 w-full z-50 md:shadow-none shadow-md">
-      <div className="Navbar bg-white py-10 flex flex-col items-center gap-9 relative">
-        <h1 className="text-3xl font-semibold text-center md:text-left">Stephanie Bee Studio</h1>
-        <div className="md:flex hidden items-center gap-11">
+    <div className="fixed top-0 left-0 z-50 w-full shadow-md md:relative md:shadow-none">
+      <div className="Navbar relative flex flex-col items-center gap-9 bg-white py-10">
+        <h1 className="text-center text-3xl font-semibold md:text-left">Stephanie Bee Studio</h1>
+        <div className="hidden items-center gap-11 md:flex">
           <NavLink
             to="/"
             onClick={() => trackNavClick('Available Artwork')}
-            className="font-mono text-sm text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
+            className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark font-mono text-sm"
           >
             Available Artwork
           </NavLink>
           <NavLink
             to="/about"
             onClick={() => trackNavClick('About')}
-            className="font-mono text-sm text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
+            className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark font-mono text-sm"
           >
             About
           </NavLink>
           <NavLink
             to="/gallery"
             onClick={() => trackNavClick('Gallery')}
-            className="font-mono text-sm text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
+            className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark font-mono text-sm"
           >
             Gallery
           </NavLink>
         </div>
         <button
-          className="md:hidden absolute right-4 top-1/2 -translate-y-1/2"
+          className="absolute top-1/2 right-4 -translate-y-1/2 md:hidden"
           onClick={() => setMenuOpen((p) => !p)}
         >
           {menuOpen ? <X /> : <Menu />}
@@ -84,9 +84,9 @@ const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 z-40 animate-fadeIn" onClick={onClose} />
-      <div className="absolute top-full left-0 w-full z-50 animate-slideFromTop">
-        <div className="bg-white shadow-xl p-6 flex flex-col items-center gap-6 font-mono">
+      <div className="animate-fadeIn fixed inset-0 z-40 bg-black/50" onClick={onClose} />
+      <div className="animate-slideFromTop absolute top-full left-0 z-50 w-full">
+        <div className="flex flex-col items-center gap-6 bg-white p-6 font-mono shadow-xl">
           <NavLink
             to="/"
             onClick={() => handleLinkClick('Available Artwork')}
@@ -109,7 +109,7 @@ const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
             Gallery
           </NavLink>
           <button
-            className="bg-gray-dark text-white rounded-lg py-3 px-8 hover:bg-gray-dark/80"
+            className="bg-gray-dark hover:bg-gray-dark/80 rounded-lg px-8 py-3 text-white"
             onClick={() => {
               onClose();
               onCartOpen();

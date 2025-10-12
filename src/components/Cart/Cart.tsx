@@ -36,9 +36,9 @@ export const Cart = (props: CartProps) => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 z-40 animate-fadeIn" onClick={props.onClose} />
-      <div className="fixed top-0 right-0 w-full max-w-lg h-screen bg-white shadow-xl z-50 flex flex-col animate-slideFromRight">
-        <div className="p-6 flex justify-between items-center border-b">
+      <div className="animate-fadeIn fixed inset-0 z-40 bg-black/50" onClick={props.onClose} />
+      <div className="animate-slideFromRight fixed top-0 right-0 z-50 flex h-screen w-full max-w-lg flex-col bg-white shadow-xl">
+        <div className="flex items-center justify-between border-b p-6">
           <span className="flex items-center gap-3">
             <ShoppingCart />
             <h2 className="text-2xl font-semibold">Shopping Cart</h2>
@@ -49,14 +49,14 @@ export const Cart = (props: CartProps) => {
         </div>
         <div className="flex-1 overflow-y-auto">
           {props.items.length === 0 ? (
-            <p className="p-6 text-gray-light">Your cart is empty.</p>
+            <p className="text-gray-light p-6">Your cart is empty.</p>
           ) : (
             props.items.map((item) => (
-              <div key={item.id} className="flex gap-4 p-6 border-b last:border-b-0">
+              <div key={item.id} className="flex gap-4 border-b p-6 last:border-b-0">
                 <img
                   src={item.images[0]?.image_url}
                   alt={item.title}
-                  className="w-20 h-20 object-cover rounded cursor-pointer"
+                  className="h-20 w-20 cursor-pointer rounded object-cover"
                   onClick={() => {
                     props.onClose();
                     navigate(`/art/${item.id}`);
@@ -64,7 +64,7 @@ export const Cart = (props: CartProps) => {
                 />
                 <div className="flex flex-col gap-2">
                   <h3
-                    className="font-medium cursor-pointer"
+                    className="cursor-pointer font-medium"
                     onClick={() => {
                       props.onClose();
                       navigate(`/art/${item.id}`);
@@ -83,7 +83,7 @@ export const Cart = (props: CartProps) => {
             ))
           )}
         </div>
-        <div className="p-6 border-t flex flex-col gap-6">
+        <div className="flex flex-col gap-6 border-t p-6">
           <div className="flex justify-between">
             <p className="text-gray-light">Subtotal:</p>
             <p className="font-semibold">
@@ -91,7 +91,7 @@ export const Cart = (props: CartProps) => {
             </p>
           </div>
           <button
-            className="w-full py-3 rounded border border-gray-dark hover:bg-gray-dark hover:text-white disabled:opacity-50"
+            className="border-gray-dark hover:bg-gray-dark w-full rounded border py-3 hover:text-white disabled:opacity-50"
             disabled={props.items.length === 0 || loading}
             onClick={handleCheckout}
           >

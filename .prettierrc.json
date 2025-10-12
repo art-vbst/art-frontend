@@ -3,5 +3,6 @@
   "printWidth": 100,
   "quoteProps": "consistent",
   "semi": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
