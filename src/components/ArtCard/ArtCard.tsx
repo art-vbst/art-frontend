@@ -7,28 +7,31 @@ type ArtCardProps = {
   artwork: Artwork;
   showInfo?: boolean;
   onClick?: () => void;
-  dimensions?: [number, number];
 };
 
-export const ArtCard = ({ artwork, showInfo = true, onClick, dimensions }: ArtCardProps) => {
+export const ArtCard = ({ artwork, showInfo = true, onClick }: ArtCardProps) => {
   const [srcLoaded, setSrcLoaded] = React.useState(false);
+
+  const mainImage = artwork.images[0];
+  const width = mainImage?.image_width;
+  const height = mainImage?.image_height;
 
   return (
     <div className="ArtCard" onClick={onClick}>
       <div className="ArtCard__image">
-        {dimensions && !srcLoaded && (
+        {width && height && !srcLoaded && (
           <div
             className="ArtCard__image__dimensions"
             style={{
               width: '100%',
-              paddingBottom: `${(dimensions[1] / dimensions[0]) * 100}%`,
+              paddingBottom: `${(height / width) * 100}%`,
             }}
           />
         )}
         <img
           style={srcLoaded ? {} : { display: 'none' }}
           alt={artwork.title}
-          src={artwork.images[0]?.image}
+          src={mainImage?.image_url}
           onLoad={() => setSrcLoaded(true)}
         />
       </div>

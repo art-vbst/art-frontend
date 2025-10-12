@@ -18,7 +18,7 @@ export const ArtViewer = ({ artwork, open, onClose }: ArtViewerProps) => {
           <X />
         </div>
         <div className="ArtViewer__image">
-          <img src={artwork.images[0].image} alt={artwork.title} />
+          <img src={artwork.images[0].image_url} alt={artwork.title} />
         </div>
         <h2 className="ArtViewer__title">{artwork.title}</h2>
       </div>

@@ -23,7 +23,6 @@ export const Gallery = () => {
         artwork={artwork}
         showInfo={false}
         onClick={() => setOpenArtwork(artwork)}
-        dimensions={artwork.image_dimensions}
       />
     );
   };

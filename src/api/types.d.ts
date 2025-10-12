@@ -1,24 +1,28 @@
 export type Artwork = {
   id: string;
   title: string;
-  painting_number: number;
-  painting_year: number;
+  painting_number: number | null;
+  painting_year: number | null;
   width_inches: number;
   height_inches: number;
-  paper: boolean;
+  price_cents: number;
+  paper: boolean | null;
+  sort_order: number | null;
+  sold_at: string | null;
+  status: string;
   medium: string;
   category: string;
-  status: string;
-  price_cents: number;
-  created_at: string;
-  updated_at: string;
   images: Image[];
-  image_dimensions?: [number, number];
+  created_at: string;
+  order_id: string | null;
 };
 
 export type Image = {
   id: string;
-  image: string;
+  artwork_id: string;
   is_main_image: boolean;
-  uploaded_at: string;
+  image_url: string;
+  image_width: number | null;
+  image_height: number | null;
+  created_at: string;
 };
