@@ -4,10 +4,6 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      colors: {
-        'gray-light': '#777',
-        'gray-dark': '#222',
-      },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
         mono: ['Roboto Mono', 'monospace'],

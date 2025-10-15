@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
-import qs from 'qs';
 
 export const http = axios.create({
   baseURL: import.meta.env.VITE_API_HOST,
   withCredentials: true,
   paramsSerializer: (params) => {
-    return qs.stringify(params, { arrayFormat: 'repeat' });
+    return new URLSearchParams(params).toString();
   },
 });
 
