@@ -2,20 +2,16 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useCartStore } from '~/data/stores';
+import { pluralize } from '~/utils/format';
 
-type NavbarProps = {
-  onCartOpen: () => void;
-};
-
-export const Navbar = ({ onCartOpen }: NavbarProps) => {
+export const Navbar = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 720px)');
+
     const handleResize = (e: MediaQueryListEvent) => {
-      if (e.matches) {
-        setMenuOpen(false);
-      }
+      e.matches && setMenuOpen(false);
     };
 
     mediaQuery.addEventListener('change', handleResize);
@@ -53,7 +49,7 @@ export const Navbar = ({ onCartOpen }: NavbarProps) => {
           {menuOpen ? <X /> : <Menu />}
         </button>
       </div>
-      <MenuModal isOpen={menuOpen} onClose={() => setMenuOpen(false)} onCartOpen={onCartOpen} />
+      <MenuModal isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>
   );
 };
@@ -61,11 +57,15 @@ export const Navbar = ({ onCartOpen }: NavbarProps) => {
 type MenuModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onCartOpen: () => void;
 };
 
-const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
-  const { cart } = useCartStore();
+const MenuModal = ({ isOpen, onClose }: MenuModalProps) => {
+  const { cart, setIsCartOpen } = useCartStore();
+
+  function handleCartOpen() {
+    onClose();
+    setIsCartOpen(true);
+  }
 
   if (!isOpen) return null;
 
@@ -94,12 +94,9 @@ const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
           </NavLink>
           <button
             className="bg-gray-dark hover:bg-gray-dark/80 rounded-lg px-8 py-3 text-white"
-            onClick={() => {
-              onClose();
-              onCartOpen();
-            }}
+            onClick={() => handleCartOpen()}
           >
-            My Cart - {cart.length} item{cart.length === 1 ? '' : 's'}
+            My Cart - {cart.length} {pluralize(cart.length, 'item')}
           </button>
         </div>
       </div>

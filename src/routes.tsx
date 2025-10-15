@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom';
-import { Layout } from 'lucide-react';
 import { ErrorBoundary } from './layout/error';
+import { Layout } from './layout/layout';
 import { About } from './pages/about/About';
 import { ArtDetail } from './pages/art/ArtDetail';
 import { ArtList } from './pages/art/ArtList';

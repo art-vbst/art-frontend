@@ -3,17 +3,28 @@ import { Artwork } from '~/api';
 
 type CartStore = {
   cart: Artwork[];
+  isCartOpen: boolean;
   setCart: (cart: Artwork[]) => void;
+  setIsCartOpen: (isCartOpen: boolean) => void;
   addToCart: (artwork: Artwork) => void;
   removeFromCart: (productId: string) => void;
 };
 
 export const useCartStore = create<CartStore>((set) => ({
   cart: [],
-  setCart: (cart: Artwork[]) => set({ cart }),
-  addToCart: (product) => set((state) => ({ cart: [...state.cart, product] })),
-  removeFromCart: (productId: string) =>
+  isCartOpen: false,
+  setCart: (cart: Artwork[]) => {
+    set({ cart });
+  },
+  setIsCartOpen: (isCartOpen: boolean) => {
+    set({ isCartOpen });
+  },
+  addToCart: (product) => {
+    set((state) => ({ cart: [...state.cart, product] }));
+  },
+  removeFromCart: (productId: string) => {
     set((state) => ({
       cart: state.cart.filter((item) => item.id !== productId),
-    })),
+    }));
+  },
 }));

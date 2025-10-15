@@ -5,7 +5,7 @@ interface ErrorBoundaryProps {
   fallback: React.ReactNode;
 }
 
-class ErrorBoundaryClass extends React.Component<ErrorBoundaryProps> {
+export class ErrorBoundary extends React.Component<ErrorBoundaryProps> {
   state = { hasError: false };
 
   constructor(props: ErrorBoundaryProps) {
@@ -28,7 +28,3 @@ class ErrorBoundaryClass extends React.Component<ErrorBoundaryProps> {
     return this.props.children;
   }
 }
-
-export const ErrorBoundary = (props: ErrorBoundaryProps) => {
-  return <ErrorBoundaryClass {...props} />;
-};
