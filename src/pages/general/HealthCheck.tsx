@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PageContainer } from '~/components';
+import { PageContainer } from '~/components/PageContainer/PageContainer';
 
 export const HealthCheck = () => {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Artwork } from '~/api';
-import { formatInches } from '~/utils/api';
-import { ShimmerPlaceholder } from '~/components';
+import { formatInches } from '~/api/utils';
+import { ShimmerPlaceholder } from '../ShimmerPlaceholder/ShimmerPlaceholder';
 
 type ArtCardProps = {
   artwork: Artwork;

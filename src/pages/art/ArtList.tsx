@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArtCard, Spinner } from '~/components';
 import { Artwork, ArtworkModel } from '~/api';
+import { ArtCard } from '~/components/ArtCard/ArtCard';
+import { Spinner } from '~/components/Spinner/Spinner';
 
 export const ArtList = () => {
   return (
     <div className="flex w-full justify-center p-8 pb-24">
-      <div className="max-w-5xl">
+      <div className="w-full max-w-5xl">
         <ArtListContent />
       </div>
     </div>

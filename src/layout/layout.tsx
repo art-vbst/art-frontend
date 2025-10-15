@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { Artwork, ArtworkModel } from '~/api';
-import { Cart, Navbar } from '~/components';
-import { useCartStore, useTrackClick } from '~/data';
+import { Cart } from '~/components/Cart/Cart';
+import { Navbar } from '~/components/Navbar/Navbar';
+import { useCartStore } from '~/data/stores';
 
 export const Layout = () => {
   const [cartOpen, setCartOpen] = React.useState(false);
@@ -11,7 +12,6 @@ export const Layout = () => {
   const location = useLocation();
 
   const { cart, setCart } = useCartStore();
-  const trackCartClick = useTrackClick('cart');
 
   React.useEffect(() => {
     if (initialLoadRef.current) {
@@ -59,7 +59,6 @@ export const Layout = () => {
         }}
         onClick={() => {
           setCartOpen(true);
-          trackCartClick('Cart Badge');
         }}
       >
         <div className="absolute top-2 right-2 flex items-center gap-2">

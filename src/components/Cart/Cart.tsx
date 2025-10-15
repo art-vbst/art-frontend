@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, X } from 'lucide-react';
-import { useCartStore } from '~/data';
 import { Artwork, http } from '~/api';
+import { useCartStore } from '~/data/stores';
 
 interface CartProps {
   items: Artwork[];

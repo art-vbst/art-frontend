@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCartStore } from '~/data';
-import { Button, PageContainer } from '~/components';
+import { Button } from '~/components/Button/Button';
+import { PageContainer } from '~/components/PageContainer/PageContainer';
+import { useCartStore } from '~/data/stores';
 
 export const CheckoutReturn = () => {
   const navigate = useNavigate();

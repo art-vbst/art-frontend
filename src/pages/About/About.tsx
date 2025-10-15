@@ -1,6 +1,6 @@
 import * as React from 'react';
 import about_img from '~/assets/cc65d761-1ea5-41c6-a9fe-c14d4a5d0ab9.jpg';
-import { ShimmerPlaceholder } from '~/components';
+import { ShimmerPlaceholder } from '~/components/ShimmerPlaceholder/ShimmerPlaceholder';
 
 export const About = () => {
   const [imageLoaded, setImageLoaded] = React.useState(false);

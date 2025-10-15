@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { ArtCard, ArtViewer, Spinner } from '~/components';
 import { Artwork, ArtworkModel } from '~/api';
+import { ArtCard } from '~/components/ArtCard/ArtCard';
+import { ArtViewer } from '~/components/ArtViewer/ArtViewer';
+import { Spinner } from '~/components/Spinner/Spinner';
 
 export const Gallery = () => {
   const [openArtwork, setOpenArtwork] = React.useState<Artwork | null>(null);

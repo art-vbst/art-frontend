@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useCartStore, useTrackClick } from '~/data';
+import { useCartStore } from '~/data/stores';
 
 type NavbarProps = {
   onCartOpen: () => void;
@@ -9,8 +9,6 @@ type NavbarProps = {
 
 export const Navbar = ({ onCartOpen }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
-
-  const trackNavClick = useTrackClick('nav-link');
 
   React.useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 720px)');
@@ -31,21 +29,18 @@ export const Navbar = ({ onCartOpen }: NavbarProps) => {
         <div className="hidden items-center gap-11 md:flex">
           <NavLink
             to="/"
-            onClick={() => trackNavClick('Available Artwork')}
             className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark font-mono text-sm"
           >
             Available Artwork
           </NavLink>
           <NavLink
             to="/about"
-            onClick={() => trackNavClick('About')}
             className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark font-mono text-sm"
           >
             About
           </NavLink>
           <NavLink
             to="/gallery"
-            onClick={() => trackNavClick('Gallery')}
             className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark font-mono text-sm"
           >
             Gallery
@@ -72,14 +67,6 @@ type MenuModalProps = {
 const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
   const { cart } = useCartStore();
 
-  const trackNavClick = useTrackClick('nav-link');
-  const trackCartClick = useTrackClick('cart');
-
-  function handleLinkClick(name: string) {
-    onClose();
-    trackNavClick(name);
-  }
-
   if (!isOpen) return null;
 
   return (
@@ -89,21 +76,18 @@ const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
         <div className="flex flex-col items-center gap-6 bg-white p-6 font-mono shadow-xl">
           <NavLink
             to="/"
-            onClick={() => handleLinkClick('Available Artwork')}
             className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             Available Artwork
           </NavLink>
           <NavLink
             to="/about"
-            onClick={() => handleLinkClick('About')}
             className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             About
           </NavLink>
           <NavLink
             to="/gallery"
-            onClick={() => handleLinkClick('Gallery')}
             className="text-gray-light hover:text-gray-dark [&.active]:text-gray-dark"
           >
             Gallery
@@ -113,7 +97,6 @@ const MenuModal = ({ isOpen, onClose, onCartOpen }: MenuModalProps) => {
             onClick={() => {
               onClose();
               onCartOpen();
-              trackCartClick('Mobile Cart Button');
             }}
           >
             My Cart - {cart.length} item{cart.length === 1 ? '' : 's'}

@@ -1,20 +1,22 @@
-import * as Sentry from '@sentry/react';
 import { RouteObject } from 'react-router-dom';
-import { Layout } from '~/layout';
-import {
-  About,
-  ArtDetail,
-  ArtList,
-  CheckoutReturn,
-  Gallery,
-  Error,
-  NotFound,
-  HealthCheck,
-} from '~/pages';
+import { Layout } from 'lucide-react';
+import { ErrorBoundary } from './layout/error';
+import { About } from './pages/about/About';
+import { ArtDetail } from './pages/art/ArtDetail';
+import { ArtList } from './pages/art/ArtList';
+import { Gallery } from './pages/art/Gallery';
+import { Error } from './pages/general/Error';
+import { HealthCheck } from './pages/general/HealthCheck';
+import { NotFound } from './pages/general/NotFound';
+import { CheckoutReturn } from './pages/orders/CheckoutReturn';
 
-const LayoutWithBoundary = Sentry.withErrorBoundary(Layout, {
-  fallback: <Error />,
-});
+const LayoutWithBoundary = () => {
+  return (
+    <ErrorBoundary fallback={<Error />}>
+      <Layout />
+    </ErrorBoundary>
+  );
+};
 
 export const routes: RouteObject[] = [
   {
