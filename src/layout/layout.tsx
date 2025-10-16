@@ -14,10 +14,8 @@ export const Layout = () => {
   const isSystemRoute = useIsSystemRoute();
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <div className={cn({ '[&_.Navbar]:animate-boxShadow': isSystemRoute })}>
-        <Navbar />
-      </div>
+    <div className="flex min-h-dvh flex-col">
+      <Navbar />
       <Cart />
       <CartBadge />
       <Outlet />
