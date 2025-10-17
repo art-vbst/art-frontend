@@ -15,7 +15,9 @@ export const Layout = () => {
       <Cart />
       <CartBadge />
       <div className="flex w-full flex-col items-center pb-16">
-        <Outlet />
+        <div className="flex w-full max-w-5xl flex-col">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

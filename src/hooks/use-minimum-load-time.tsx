@@ -1,51 +1,58 @@
 import * as React from 'react';
 
-const MINIMUM_LOAD_TIME = 300;
+const MINIMUM_LOAD_TIME = 500;
 
 type UseMinimumLoadTimeProps = {
-  done: boolean;
   minimumLoadTime?: number;
 };
 
-export function useMinimumLoadTime({
-  done,
-  minimumLoadTime = MINIMUM_LOAD_TIME,
-}: UseMinimumLoadTimeProps) {
-  const [isLoading, setIsLoading] = React.useState(true);
+export function useMinimumLoadTime(props?: UseMinimumLoadTimeProps) {
+  const { minimumLoadTime = MINIMUM_LOAD_TIME } = props ?? {};
 
+  const [loadingDisplay, setLoadingDisplay] = React.useState(false);
+
+  const loadingActualRef = React.useRef(false);
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
-  const doneRef = React.useRef(done);
 
   React.useEffect(() => {
-    doneRef.current = done;
-  }, [done]);
-
-  React.useEffect(() => {
-    return () => {
-      timeoutRef.current && clearTimeout(timeoutRef.current);
-    };
+    return () => clearTimeoutRef();
   }, []);
 
-  function trySetLoading(loading: boolean) {
-    if (!loading && !timeoutRef.current) {
-      return;
-    }
-
-    if (!loading) {
-      setIsLoading(false);
-      return;
-    }
-
-    timeoutRef.current && clearTimeout(timeoutRef.current);
-    setIsLoading(true);
-    debounceStopLoading();
+  function trySetLoading(newLoading: boolean) {
+    loadingActualRef.current = newLoading;
+    newLoading ? trySetLoadingTrue() : trySetLoadingFalse();
   }
 
-  function debounceStopLoading() {
+  function trySetLoadingTrue() {
+    clearTimeoutRef();
+    setLoadingDisplay(true);
+    timeoutStopLoading();
+  }
+
+  function trySetLoadingFalse() {
+    if (!timeoutRef.current) {
+      setLoadingDisplay(false);
+    }
+  }
+
+  function timeoutStopLoading() {
     timeoutRef.current = setTimeout(() => {
-      doneRef.current && setIsLoading(false);
+      if (timeoutRef.current) {
+        setLoadingDisplay(loadingActualRef.current);
+        clearTimeoutRef();
+      }
     }, minimumLoadTime);
   }
 
-  return { isLoading, setIsLoading: trySetLoading };
+  function clearTimeoutRef() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  }
+
+  return {
+    isLoading: loadingDisplay,
+    setIsLoading: trySetLoading,
+  };
 }

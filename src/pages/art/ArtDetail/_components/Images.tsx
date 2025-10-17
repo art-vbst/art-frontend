@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Artwork, Image } from '~/api/types';
+import { ImgWithPlaceholder } from '~/components/ImgWithPlaceholder/ImgWithPlaceholder';
 import { cn } from '~/utils/cn';
 
 export const ArtDetailImages = ({ artwork }: { artwork: Artwork }) => {
@@ -12,28 +13,28 @@ export const ArtDetailImages = ({ artwork }: { artwork: Artwork }) => {
         className="relative flex w-[80px] cursor-pointer"
         onClick={() => setSelectedImageIndex(index)}
       >
-        <div className="h-full w-full">
-          <img src={image.image_url} alt={artwork.title} className="h-full w-full object-cover" />
-        </div>
-        <div
-          className={cn(
-            'absolute top-0 left-0 h-full w-full bg-white/50 transition-[background-color] duration-200 hover:bg-transparent',
-            selectedImageIndex === index && 'bg-transparent',
-          )}
-        />
+        <ImgWithPlaceholder image={image} alt={artwork.title}>
+          <div
+            className={cn(
+              'absolute top-0 left-0 h-full w-full bg-white/50 transition-[background-color] duration-200 hover:bg-transparent',
+              selectedImageIndex === index && 'bg-transparent',
+            )}
+          />
+        </ImgWithPlaceholder>
       </div>
     );
   }
 
   function renderMainImage() {
     return (
-      <div className="w-full">
-        <img
-          src={artwork.images[selectedImageIndex]?.image_url}
-          alt={artwork.title}
-          className="block h-auto w-full max-w-full"
-        />
-      </div>
+      // <div className="w-full">
+      //   <img
+      //     src={artwork.images[selectedImageIndex]?.image_url}
+      //     alt={artwork.title}
+      //     className="block h-auto w-full max-w-full"
+      //   />
+      // </div>
+      <ImgWithPlaceholder image={artwork.images[selectedImageIndex]} alt={artwork.title} />
     );
   }
 

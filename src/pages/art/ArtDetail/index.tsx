@@ -3,7 +3,7 @@ import { usePageData } from '~/hooks/use-page-data';
 import { useValidatedId } from '~/hooks/use-validated-id';
 import { NotFound } from '~/pages/general/NotFound';
 import { Spinner } from '~/components/Spinner/Spinner';
-import { ArtDetailContent } from './components/Content';
+import { ArtDetailContent } from './_components/Content';
 
 export default function ArtDetail() {
   const artworkId = useValidatedId();
@@ -12,7 +12,7 @@ export default function ArtDetail() {
     return <NotFound />;
   }
 
-  const { data: artwork, loading } = usePageData(() => ArtworkModel.get(artworkId));
+  const { data, loading } = usePageData(() => ArtworkModel.get(artworkId));
 
   if (loading) {
     return (
@@ -22,9 +22,9 @@ export default function ArtDetail() {
     );
   }
 
-  if (!artwork) {
+  if (!data) {
     return <NotFound />;
   }
 
-  return <ArtDetailContent artwork={artwork} />;
+  return <ArtDetailContent artwork={data} />;
 }

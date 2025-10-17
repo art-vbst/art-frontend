@@ -3,38 +3,24 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { useMinimumLoadTime } from './use-minimum-load-time';
 import { ApiError, ServerError } from '~/api/errors';
 
-type PageDataConfig = {
-  minimumLoadTime?: number;
-};
-
-export function usePageData<T>(
-  fetchData: () => Promise<AxiosResponse<T>>,
-  config?: PageDataConfig,
-) {
+export function usePageData<T>(fetchData: () => Promise<AxiosResponse<T>>) {
   const [data, setData] = React.useState<T | null>(null);
-  const [localLoading, setLocalLoading] = React.useState(true);
 
-  const { isLoading, setIsLoading } = useMinimumLoadTime({
-    done: !localLoading,
-    minimumLoadTime: config?.minimumLoadTime,
-  });
+  const { isLoading, setIsLoading } = useMinimumLoadTime();
 
   React.useEffect(() => {
     performRequest();
   }, []);
 
-  React.useEffect(() => {
-    setIsLoading(localLoading);
-  }, [localLoading, setIsLoading]);
-
   async function performRequest() {
     try {
+      setIsLoading(true);
       const res = await fetchData();
       setData(res.data);
     } catch (err: unknown) {
       handleError(err);
     } finally {
-      setLocalLoading(false);
+      setIsLoading(false);
     }
   }
 
