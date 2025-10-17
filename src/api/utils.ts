@@ -1,8 +1,3 @@
-export const formatInches = (inches: number) => {
-  if (inches < 9 && inches > 8.5) return 8.5;
-  return Math.floor(inches);
-};
-
 const mediumChoices = [
   { key: 'oil_panel', value: 'Oil on Panel' },
   { key: 'acrylic_panel', value: 'Acrylic on Panel' },

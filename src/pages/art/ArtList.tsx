@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Artwork, ArtworkModel } from '~/api';
+import { ArtworkModel } from '~/api/models';
+import { Artwork } from '~/api/types';
 import { ArtCard } from '~/components/ArtCard/ArtCard';
 import { Spinner } from '~/components/Spinner/Spinner';
 

@@ -14,7 +14,9 @@ export const Layout = () => {
       <Navbar />
       <Cart />
       <CartBadge />
-      <Outlet />
+      <div className="flex w-full flex-col items-center pb-16">
+        <Outlet />
+      </div>
     </div>
   );
 };

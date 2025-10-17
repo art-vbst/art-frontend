@@ -8,3 +8,12 @@ export function centsToDollarString(cents: number) {
     currency: 'USD',
   });
 }
+
+export const formatInches = (inches: number) => {
+  if (inches < 9 && inches > 8.5) return 8.5;
+  return Math.floor(inches);
+};
+
+export function checkExhaustiveness(_val: never): never {
+  throw new Error('not exhaustive');
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Artwork } from '~/api';
-import { formatInches } from '~/api/utils';
+import { Artwork } from '~/api/types';
+import { formatInches } from '~/utils/format';
 import { ShimmerPlaceholder } from '../ShimmerPlaceholder/ShimmerPlaceholder';
 
 type ArtCardProps = {

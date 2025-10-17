@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Artwork } from '~/api';
+import { Artwork } from '~/api/types';
 
 type CartStore = {
   cart: Artwork[];

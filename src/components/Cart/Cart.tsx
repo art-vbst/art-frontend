@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, X } from 'lucide-react';
-import { http } from '~/api';
+import { http } from '~/api/http';
 import { useCartStore } from '~/data/stores';
 import { centsToDollarString } from '~/utils/format';
 

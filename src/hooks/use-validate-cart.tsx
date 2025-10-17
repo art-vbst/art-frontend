@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Artwork, ArtworkModel, ArtworkStatus } from '~/api';
+import { Artwork, ArtworkStatus } from '~/api/types';
+import { ArtworkModel } from '~/api/models';
 import { useCartStore } from '~/data/stores';
 
 export const useValidateCart = () => {

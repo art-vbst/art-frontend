@@ -2,7 +2,7 @@ import { RouteObject } from 'react-router-dom';
 import { ErrorBoundary } from './layout/error';
 import { Layout } from './layout/layout';
 import { About } from './pages/about/About';
-import { ArtDetail } from './pages/art/ArtDetail';
+import ArtDetail from './pages/art/ArtDetail';
 import { ArtList } from './pages/art/ArtList';
 import { Gallery } from './pages/art/Gallery';
 import { Error } from './pages/general/Error';

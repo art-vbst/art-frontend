@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Artwork, ArtworkModel } from '~/api';
+import { ArtworkModel } from '~/api/models';
+import { Artwork } from '~/api/types';
 import { ArtCard } from '~/components/ArtCard/ArtCard';
 import { ArtViewer } from '~/components/ArtViewer/ArtViewer';
 import { Spinner } from '~/components/Spinner/Spinner';
