@@ -40,7 +40,7 @@ export const routes: RouteObject[] = [
         element: <ArtDetail />,
       },
       {
-        path: '/checkout/success',
+        path: '/checkout/return',
         element: <CheckoutReturn />,
       },
       {
