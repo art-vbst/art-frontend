@@ -10,11 +10,11 @@ export const Layout = () => {
   useValidateCart();
 
   return (
-    <div className="flex min-h-dvh flex-col">
-      <Navbar />
+    <div className="flex min-h-dvh w-full flex-col">
+      <Navbar className="mb-6 sm:mb-0" />
       <Cart />
       <CartBadge />
-      <div className="flex w-full flex-col items-center pb-16">
+      <div className="flex w-full flex-col items-center px-5 pb-16">
         <div className="flex w-full max-w-5xl flex-col">
           <Outlet />
         </div>

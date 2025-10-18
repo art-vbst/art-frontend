@@ -6,12 +6,12 @@ import { ArtDetailImages } from './ArtDetailImages';
 
 export const ArtDetailContent = ({ artwork }: { artwork: Artwork }) => {
   return (
-    <div className="flex w-full max-w-6xl flex-col gap-8">
+    <div className="flex w-full max-w-6xl flex-col gap-4 sm:gap-8">
       <Link to="/" className="flex items-center gap-2 text-sm no-underline">
         <ChevronLeft />
         <p>Back to Store</p>
       </Link>
-      <div className="flex w-full gap-16">
+      <div className="flex w-full flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="flex-2">
           <ArtDetailImages artwork={artwork} />
         </div>

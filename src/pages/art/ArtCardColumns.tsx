@@ -19,13 +19,17 @@ export const ArtCardColumns = ({
   const spacingClass = useMemo(() => {
     switch (spacing) {
       case 'sm':
-        return 'gap-8';
+        return 'sm:gap-8';
       case 'md':
-        return 'gap-16';
+        return 'sm:gap-16';
       case 'lg':
-        return 'gap-24';
+        return 'sm:gap-24';
     }
   }, [spacing]);
+
+  const spacingClassString = useMemo(() => {
+    return `flex flex-col gap-8 ${spacingClass}`;
+  }, [spacingClass]);
 
   const renderArtwork = (artwork: Artwork) => {
     return (
@@ -38,11 +42,11 @@ export const ArtCardColumns = ({
   };
 
   return (
-    <div className={cn('flex', spacingClass)}>
-      <div className={cn('flex flex-1 flex-col', spacingClass)}>
+    <div className={cn(spacingClassString, 'sm:flex-row')}>
+      <div className={cn(spacingClassString, 'flex-1')}>
         {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
       </div>
-      <div className={cn('flex flex-1 flex-col', spacingClass)}>
+      <div className={cn(spacingClassString, 'flex-1')}>
         {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
       </div>
     </div>

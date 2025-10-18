@@ -20,7 +20,7 @@ export const useCartStore = create<CartStore>((set) => ({
     set({ isCartOpen });
   },
   addToCart: (product) => {
-    set((state) => ({ cart: [...state.cart, product] }));
+    set((state) => ({ cart: [...state.cart, product], isCartOpen: true }));
   },
   removeFromCart: (productId: string) => {
     set((state) => ({

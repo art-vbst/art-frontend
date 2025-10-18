@@ -9,7 +9,11 @@ type ImgWithPlaceholderProps = {
   children?: React.ReactNode;
 };
 
-export const ImgWithPlaceholder = ({ image, alt, children }: ImgWithPlaceholderProps) => {
+export const ImgWithPlaceholder = ({
+  image,
+  alt,
+  children,
+}: ImgWithPlaceholderProps) => {
   const width = image.image_width;
   const height = image.image_height;
 
@@ -17,7 +21,9 @@ export const ImgWithPlaceholder = ({ image, alt, children }: ImgWithPlaceholderP
 
   return (
     <div className="relative w-full">
-      {!srcLoaded && width && height && <ShimmerPlaceholder width={width} height={height} />}
+      {!srcLoaded && width && height && (
+        <ShimmerPlaceholder width={width} height={height} />
+      )}
       <img
         alt={alt}
         src={image.image_url}

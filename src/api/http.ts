@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const http = axios.create({
   baseURL: import.meta.env.VITE_API_HOST,
-  withCredentials: true,
   paramsSerializer: (params) => {
     return new URLSearchParams(params).toString();
   },
@@ -55,7 +54,13 @@ export class BaseModel<T> {
     });
   }
 
-  listAction(action: string, method: string, data: any = {}, params: any = {}, config: any = {}) {
+  listAction(
+    action: string,
+    method: string,
+    data: any = {},
+    params: any = {},
+    config: any = {},
+  ) {
     return http.request({
       url: `${this.endpoint}${action}`,
       method,

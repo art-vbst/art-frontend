@@ -5,22 +5,27 @@ import { ApiError, ServerError } from '~/api/errors';
 
 export function usePageData<T>(fetchData: () => Promise<AxiosResponse<T>>) {
   const [data, setData] = React.useState<T | null>(null);
+  const [localLoading, setLocalLoading] = React.useState(true);
 
-  const { isLoading, setIsLoading } = useMinimumLoadTime();
+  const { loading, setLoading } = useMinimumLoadTime();
 
   React.useEffect(() => {
     performRequest();
   }, []);
 
+  React.useEffect(() => {
+    setLocalLoading(loading);
+  }, [loading]);
+
   async function performRequest() {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const res = await fetchData();
       setData(res.data);
     } catch (err: unknown) {
       handleError(err);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   }
 
@@ -32,5 +37,5 @@ export function usePageData<T>(fetchData: () => Promise<AxiosResponse<T>>) {
     throw new ServerError('an unknown error occurred');
   };
 
-  return { data, loading: isLoading };
+  return { data, loading: localLoading };
 }

@@ -21,12 +21,21 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
           isMenuOpen ? 'shadow-none' : 'shadow-md',
         )}
       >
-        <h2 className="text-center text-xl font-semibold">Stephanie Bee Studio</h2>
-        <button className="cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <h2 className="text-center text-xl font-semibold">
+          Stephanie Bee Studio
+        </h2>
+        <button
+          className="cursor-pointer"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
           {isMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
-      <NavMobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} navlinks={navlinks} />
+      <NavMobileMenu
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        navlinks={navlinks}
+      />
     </div>
   );
 };
@@ -37,7 +46,11 @@ type NavMobileMenuProps = {
   navlinks: NavLinkData[];
 };
 
-const NavMobileMenu = ({ isMenuOpen, setIsMenuOpen, navlinks }: NavMobileMenuProps) => {
+const NavMobileMenu = ({
+  isMenuOpen,
+  setIsMenuOpen,
+  navlinks,
+}: NavMobileMenuProps) => {
   const { cart, setIsCartOpen } = useCartStore();
 
   function handleCartOpen() {
@@ -57,6 +70,14 @@ const NavMobileMenu = ({ isMenuOpen, setIsMenuOpen, navlinks }: NavMobileMenuPro
     );
   }
 
+  function getCartButtonText() {
+    const base = 'My Bag';
+
+    return cart.length === 0
+      ? base
+      : `${base} - ${cart.length} ${pluralize(cart.length, 'item')}`;
+  }
+
   if (!isMenuOpen) {
     return null;
   }
@@ -73,7 +94,7 @@ const NavMobileMenu = ({ isMenuOpen, setIsMenuOpen, navlinks }: NavMobileMenuPro
           className="cursor-pointer rounded-lg bg-gray-900 px-8 py-3 text-white hover:bg-gray-800"
           onClick={() => handleCartOpen()}
         >
-          My Cart - {cart.length} {pluralize(cart.length, 'item')}
+          {getCartButtonText()}
         </button>
       </div>
     </>

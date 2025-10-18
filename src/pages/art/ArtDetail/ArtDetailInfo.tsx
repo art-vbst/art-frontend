@@ -37,20 +37,27 @@ export const ArtDetailInfo = ({ artwork }: { artwork: Artwork }) => {
     }
   }
 
+  function getSizeString(width: number, height: number) {
+    return `${Number(width)}" x ${Number(height)}"`;
+  }
+
+  function getArtistTimestamp(name: string, year: number | null) {
+    if (!year) return name;
+    return `${name}, ${year}`;
+  }
+
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-normal">{artwork.title}</h1>
-      <p className="text-sm font-medium">{centsToDollarString(artwork.price_cents)}</p>
-      <p className="text-gray-light text-sm">Unframed original painting.</p>
-      <p className="text-gray-light text-sm">Medium: {getMedium(artwork.medium)}</p>
-      <p className="text-gray-light text-sm">
-        Size: {Number(artwork.width_inches)}" x {Number(artwork.height_inches)}"
+    <div className="flex flex-col gap-6 text-sm text-gray-600">
+      <h1 className="text-2xl font-normal text-gray-900">{artwork.title}</h1>
+      <p className="font-medium text-gray-900">
+        {centsToDollarString(artwork.price_cents)}
       </p>
-      <p className="text-gray-light text-sm">
-        Stephanie Bergeson{artwork.painting_year ? `, ${artwork.painting_year}` : ''}
-      </p>
+      <p>Unframed original painting.</p>
+      <p>Medium: {getMedium(artwork.medium)}</p>
+      <p>Size: {getSizeString(artwork.width_inches, artwork.height_inches)}</p>
+      <p>{getArtistTimestamp('Stephanie Bergeson', artwork.painting_year)}</p>
       <Button
-        className="mt-4 self-start rounded-sm border-none bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-white disabled:hover:bg-gray-600"
+        className="mt-4 self-start"
         onClick={handleAddToCart}
         disabled={artworkInCart || artwork.status !== ArtworkStatus.Available}
       >

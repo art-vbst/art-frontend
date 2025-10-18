@@ -5,14 +5,23 @@ html {
   padding: unset;
 }
 
+html:has(#cart) {
+  overflow: hidden;
+}
+
 body {
   padding: unset;
 }
 
-
 @theme {
   --font-family-sans: 'Montserrat', sans-serif;
   --font-family-mono: 'Roboto Mono', monospace;
+
+  --breakpoint-xs: 476px;
+  --breakpoint-sm: 641px;
+  --breakpoint-md: 769px;
+  --breakpoint-lg: 1025px;
+  --breakpoint-xl: 1281px;
 
   @keyframes slideFromTop {
     from { transform: translateY(-100%); }

@@ -52,7 +52,7 @@ export function useMinimumLoadTime(props?: UseMinimumLoadTimeProps) {
   }
 
   return {
-    isLoading: loadingDisplay,
-    setIsLoading: trySetLoading,
+    loading: loadingDisplay,
+    setLoading: trySetLoading,
   };
 }

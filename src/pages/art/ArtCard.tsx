@@ -17,7 +17,7 @@ export const ArtCard = ({
 
   return (
     <div
-      className="flex cursor-pointer flex-col items-center"
+      className="flex w-full cursor-pointer flex-col items-center"
       onClick={onClick}
     >
       <ImgWithPlaceholder image={mainImage} alt={artwork.title} />
