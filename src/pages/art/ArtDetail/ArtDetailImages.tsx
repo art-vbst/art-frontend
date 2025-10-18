@@ -34,7 +34,10 @@ export const ArtDetailImages = ({ artwork }: { artwork: Artwork }) => {
       //     className="block h-auto w-full max-w-full"
       //   />
       // </div>
-      <ImgWithPlaceholder image={artwork.images[selectedImageIndex]} alt={artwork.title} />
+      <ImgWithPlaceholder
+        image={artwork.images[selectedImageIndex]}
+        alt={artwork.title}
+      />
     );
   }
 

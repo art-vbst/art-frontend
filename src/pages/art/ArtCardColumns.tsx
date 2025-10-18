@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Artwork } from '~/api/types';
-import { ArtCard } from '~/pages/art/_components/ArtCard';
+import { ArtCard } from '~/pages/art/ArtCard';
 import { cn } from '~/utils/cn';
 
 type ArtCardColumnsProps = {

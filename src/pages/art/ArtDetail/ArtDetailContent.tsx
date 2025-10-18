@@ -1,8 +1,8 @@
 import { ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router';
 import { Artwork } from '~/api/types';
-import { ArtDetailInfo } from './Info';
-import { ArtDetailImages } from './Images';
+import { ArtDetailInfo } from './ArtDetailInfo';
+import { ArtDetailImages } from './ArtDetailImages';
 
 export const ArtDetailContent = ({ artwork }: { artwork: Artwork }) => {
   return (

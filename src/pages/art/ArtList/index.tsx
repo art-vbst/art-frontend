@@ -1,5 +1,5 @@
 import { ArtworkModel } from '~/api/models';
-import { ArtCardColumns } from '../_components/ArtCardColumns';
+import { ArtCardColumns } from '../ArtCardColumns';
 import { useNavigate } from 'react-router';
 import { ListPageLoader } from '~/components/ListPageLoader/ListPageLoader';
 import { Artwork } from '~/api/types';

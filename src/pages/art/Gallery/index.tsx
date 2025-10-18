@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ArtworkModel } from '~/api/models';
 import { Artwork } from '~/api/types';
 import { ListPageLoader } from '~/components/ListPageLoader/ListPageLoader';
-import { ArtCardColumns } from '../_components/ArtCardColumns';
-import { ArtViewer } from './_components/ArtViewer';
+import { ArtCardColumns } from '../ArtCardColumns';
+import { ArtViewer } from './ArtViewer';
 
 export default function Gallery() {
   const [openArtwork, setOpenArtwork] = React.useState<Artwork | null>(null);

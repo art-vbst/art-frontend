@@ -1,6 +1,6 @@
 import { Artwork, ArtworkStatus } from '~/api/types';
 import { centsToDollarString, formatInches } from '~/utils/format';
-import { ImgWithPlaceholder } from '../../../components/ImgWithPlaceholder/ImgWithPlaceholder';
+import { ImgWithPlaceholder } from '~/components/ImgWithPlaceholder/ImgWithPlaceholder';
 
 type ArtCardProps = {
   artwork: Artwork;

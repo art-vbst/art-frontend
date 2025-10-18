@@ -3,7 +3,7 @@ import { usePageData } from '~/hooks/use-page-data';
 import { useValidatedId } from '~/hooks/use-validated-id';
 import { NotFound } from '~/pages/general/NotFound';
 import { Spinner } from '~/components/Spinner/Spinner';
-import { ArtDetailContent } from './_components/Content';
+import { ArtDetailContent } from './ArtDetailContent';
 
 export default function ArtDetail() {
   const artworkId = useValidatedId();
