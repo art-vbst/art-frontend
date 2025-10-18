@@ -15,8 +15,14 @@ export const ArtViewer = ({ artwork, open, onClose }: ArtViewerProps) => {
       className="animate-fadeIn-slow fixed inset-0 z-50 flex items-center justify-center bg-white/90"
       onClick={onClose}
     >
-      <div className="relative flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-        <button className="absolute -top-10 right-2 cursor-pointer" onClick={onClose}>
+      <div
+        className="relative flex flex-col items-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="absolute -top-10 right-2 cursor-pointer"
+          onClick={onClose}
+        >
           <X />
         </button>
         <img

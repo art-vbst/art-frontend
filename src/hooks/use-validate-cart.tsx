@@ -27,7 +27,9 @@ export const useValidateCart = () => {
     setCart(validatedArtworks);
   }
 
-  async function validateArtwork(localStorageArtwork: Artwork): Promise<Artwork | null> {
+  async function validateArtwork(
+    localStorageArtwork: Artwork,
+  ): Promise<Artwork | null> {
     try {
       const artwork = (await ArtworkModel.get(localStorageArtwork.id)).data;
       return artwork.status === ArtworkStatus.Available ? artwork : null;

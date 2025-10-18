@@ -16,7 +16,9 @@ export const NavDesktop = ({ navlinks }: NavDesktopProps) => {
 
   return (
     <div className="flex w-full flex-col items-center gap-12 py-12">
-      <h1 className="text-center text-3xl font-semibold">Stephanie Bee Studio</h1>
+      <h1 className="text-center text-3xl font-semibold">
+        Stephanie Bee Studio
+      </h1>
       <div className="flex items-center gap-12">
         {navlinks.map((navlink) => renderNavLink(navlink.to, navlink.label))}
       </div>
