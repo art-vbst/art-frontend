@@ -1,4 +1,4 @@
+import { Artwork } from '@art-vbst/art-types';
 import { BaseModel } from './http';
-import { Artwork } from './types';
 
 export const ArtworkModel = new BaseModel<Artwork>('/artworks/');

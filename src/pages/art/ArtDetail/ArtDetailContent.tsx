@@ -1,6 +1,6 @@
 import { ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router';
-import { Artwork } from '~/api/types';
+import { Artwork } from '@art-vbst/art-types';
 import { ArtDetailInfo } from './ArtDetailInfo';
 import { ArtDetailImages } from './ArtDetailImages';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from '~/api/types';
+import { Image } from '@art-vbst/art-types';
 import { cn } from '~/utils/cn';
 import { ShimmerPlaceholder } from '../ShimmerPlaceholder/ShimmerPlaceholder';
 

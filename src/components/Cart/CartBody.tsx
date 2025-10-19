@@ -1,6 +1,6 @@
 import { Trash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Artwork } from '~/api/types';
+import { Artwork } from '@art-vbst/art-types';
 import { useCartStore } from '~/data/stores';
 import { cn } from '~/utils/cn';
 import { centsToDollarString } from '~/utils/format';

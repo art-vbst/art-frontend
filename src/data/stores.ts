@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Artwork } from '~/api/types';
+import { Artwork } from '@art-vbst/art-types';
 
 type CartStore = {
   cart: Artwork[];

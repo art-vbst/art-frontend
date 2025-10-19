@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Artwork, Image } from '~/api/types';
+import { Artwork, Image } from '@art-vbst/art-types';
 import { ImgWithPlaceholder } from '~/components/ImgWithPlaceholder/ImgWithPlaceholder';
 import { cn } from '~/utils/cn';
 

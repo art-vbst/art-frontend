@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Artwork } from '~/api/types';
+import { Artwork } from '@art-vbst/art-types';
 import { ArtCard } from '~/pages/art/ArtCard';
 import { cn } from '~/utils/cn';
 

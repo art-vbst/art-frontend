@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Artwork, ArtworkStatus } from '~/api/types';
+import { Artwork, ArtworkStatus } from '@art-vbst/art-types';
 import { ArtworkModel } from '~/api/models';
 import { useCartStore } from '~/data/stores';
 

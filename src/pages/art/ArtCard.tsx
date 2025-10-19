@@ -1,4 +1,4 @@
-import { Artwork, ArtworkStatus } from '~/api/types';
+import { Artwork, ArtworkStatus } from '@art-vbst/art-types';
 import { centsToDollarString, formatInches } from '~/utils/format';
 import { ImgWithPlaceholder } from '~/components/ImgWithPlaceholder/ImgWithPlaceholder';
 

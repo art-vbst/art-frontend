@@ -1,4 +1,4 @@
-import { Artwork, ArtworkStatus } from '~/api/types';
+import { Artwork, ArtworkStatus } from '@art-vbst/art-types';
 import { getMedium } from '~/api/utils';
 import { Button } from '~/components/Button/Button';
 import { useCartStore } from '~/data/stores';

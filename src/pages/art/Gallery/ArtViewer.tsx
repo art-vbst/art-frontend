@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { Artwork } from '~/api/types';
+import { Artwork } from '@art-vbst/art-types';
 
 type ArtViewerProps = {
   artwork: Artwork | null;

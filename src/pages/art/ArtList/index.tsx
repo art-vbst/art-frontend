@@ -2,7 +2,7 @@ import { ArtworkModel } from '~/api/models';
 import { ArtCardColumns } from '../ArtCardColumns';
 import { useNavigate } from 'react-router';
 import { ListPageLoader } from '~/components/ListPageLoader/ListPageLoader';
-import { Artwork } from '~/api/types';
+import { Artwork } from '@art-vbst/art-types';
 
 export default function ArtList() {
   const navigate = useNavigate();
