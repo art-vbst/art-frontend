@@ -9,7 +9,7 @@
     "start": "vite preview",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "update:types": "npm install -D github:art-vbst/art-types"
+    "update:types": "npm update @art-vbst/art-types"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^5.2.0",
@@ -28,7 +28,7 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "@art-vbst/art-types": "github:art-vbst/art-types",
+    "@art-vbst/art-types": "^1.0.1",
     "@eslint/js": "^9.37.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
