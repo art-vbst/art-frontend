@@ -8,7 +8,8 @@
     "build": "vite build",
     "start": "vite preview",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "update:types": "npm install -D github:art-vbst/art-types"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^5.2.0",
