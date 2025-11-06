@@ -19,17 +19,17 @@ export const About = () => {
           />
         </div>
         <div className="flex flex-1 flex-col gap-2">
-          <h2 className="text-xl font-semibold">Stephanie Bee Studio</h2>
+          <h2 className="text-xl font-medium">Violet Bergeson</h2>
           <p className="text-gray-light mt-4 text-sm">
             Connect with me on Instagram!
           </p>
           <a
-            href="https://www.instagram.com/stephanie_bee_studio"
+            href="https://www.instagram.com/violetbergeson.art"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm"
+            className="text-sm font-medium"
           >
-            @stephanie_bee_studio
+            @violetbergeson.art
           </a>
         </div>
       </div>

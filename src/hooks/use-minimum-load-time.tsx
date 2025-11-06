@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const MINIMUM_LOAD_TIME = 500;
+const MINIMUM_LOAD_TIME = 200;
 
 type UseMinimumLoadTimeProps = {
   minimumLoadTime?: number;

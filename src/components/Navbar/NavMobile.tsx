@@ -22,7 +22,7 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
         )}
       >
         <h2 className="text-center text-xl font-semibold">
-          Stephanie Bee Studio
+          Violet Bergeson Art
         </h2>
         <button
           className="cursor-pointer"
