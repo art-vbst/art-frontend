@@ -1,4 +1,4 @@
-import { RouteObject } from 'react-router-dom';
+import { Outlet, RouteObject } from 'react-router';
 import { ErrorBoundary } from './layout/error';
 import { Layout } from './layout/layout';
 import { About } from './pages/about/About';
@@ -10,18 +10,37 @@ import { HealthCheck } from './pages/general/HealthCheck';
 import { NotFound } from './pages/general/NotFound';
 import { CheckoutReturn } from './pages/orders/CheckoutReturn';
 
-const LayoutWithBoundary = () => {
+const Boundary = () => {
   return (
     <ErrorBoundary fallback={<Error />}>
-      <Layout />
+      <Outlet />
     </ErrorBoundary>
   );
 };
 
-export const routes: RouteObject[] = [
+const systemRoutes: RouteObject[] = [
+  {
+    path: '/checkout/return',
+    element: <CheckoutReturn />,
+  },
+  {
+    path: '/checkout/return',
+    element: <CheckoutReturn />,
+  },
+  {
+    path: '/health',
+    element: <HealthCheck />,
+  },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
+];
+
+const standardRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <LayoutWithBoundary />,
+    element: <Layout />,
     children: [
       {
         path: '/',
@@ -39,18 +58,14 @@ export const routes: RouteObject[] = [
         path: '/art/:id',
         element: <ArtDetail />,
       },
-      {
-        path: '/checkout/return',
-        element: <CheckoutReturn />,
-      },
-      {
-        path: '/health',
-        element: <HealthCheck />,
-      },
-      {
-        path: '*',
-        element: <NotFound />,
-      },
     ],
+  },
+];
+
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <Boundary />,
+    children: [...systemRoutes, ...standardRoutes],
   },
 ];
