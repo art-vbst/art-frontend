@@ -12,7 +12,7 @@ export const About = () => {
           {!imageLoaded && <ShimmerPlaceholder width={569} height={319} />}
           <img
             src={about_img}
-            alt="Stephanie Bergeson"
+            alt="Violet Bergeson"
             style={{ display: imageLoaded ? 'block' : 'none' }}
             onLoad={() => setImageLoaded(true)}
             className="w-full object-cover"

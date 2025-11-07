@@ -55,7 +55,7 @@ export const ArtDetailInfo = ({ artwork }: { artwork: Artwork }) => {
       <p>Unframed original painting.</p>
       <p>Medium: {getMedium(artwork.medium)}</p>
       <p>Size: {getSizeString(artwork.width_inches, artwork.height_inches)}</p>
-      <p>{getArtistTimestamp('Stephanie Bergeson', artwork.painting_year)}</p>
+      <p>{getArtistTimestamp('Violet Bergeson', artwork.painting_year)}</p>
       <Button
         className="mt-4 self-start"
         onClick={handleAddToCart}
