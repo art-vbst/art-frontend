@@ -3,7 +3,12 @@ import axios from 'axios';
 export const http = axios.create({
   baseURL: import.meta.env.VITE_API_HOST,
   paramsSerializer: (params) => {
-    return new URLSearchParams(params).toString();
+    const searchParams = new URLSearchParams();
+    for (const [key, value] of Object.entries(params)) {
+      const values = Array.isArray(value) ? value : [value];
+      values.forEach((item) => searchParams.append(key, item));
+    }
+    return searchParams.toString();
   },
 });
 
@@ -19,7 +24,7 @@ export class BaseModel<T> {
   }
 
   get(id: number | string, params: any = {}) {
-    return http.get<T>(`${this.endpoint}${id}`, { params });
+    return http.get<T>(`${this.endpoint}/${id}`, { params });
   }
 
   list(params: any = {}) {
@@ -28,13 +33,13 @@ export class BaseModel<T> {
 
   update(id: number | string, data: any, config = {}, patch = true) {
     if (patch) {
-      return http.patch<T>(`${this.endpoint}${id}`, data, config);
+      return http.patch<T>(`${this.endpoint}/${id}`, data, config);
     }
-    return http.put<T>(`${this.endpoint}${id}`, data, config);
+    return http.put<T>(`${this.endpoint}/${id}`, data, config);
   }
 
   delete(id: number | string) {
-    return http.delete(`${this.endpoint}${id}`);
+    return http.delete(`${this.endpoint}/${id}`);
   }
 
   detailAction(
@@ -46,7 +51,7 @@ export class BaseModel<T> {
     config: any = {},
   ) {
     return http.request({
-      url: `${this.endpoint}${id}/${action}`,
+      url: `${this.endpoint}/${id}/${action}`,
       method,
       data,
       params,
