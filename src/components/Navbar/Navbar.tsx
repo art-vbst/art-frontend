@@ -19,7 +19,7 @@ export const Navbar = ({ className }: { className?: string }) => {
   const navlinks: NavLinkData[] = [
     { to: '/', label: 'Available Artwork' },
     { to: '/about', label: 'About' },
-    { to: '/gallery', label: 'Gallery' },
+    { to: '/portfolio', label: 'Portfolio' },
   ];
 
   return (

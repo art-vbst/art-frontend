@@ -4,7 +4,7 @@ import { Layout } from './layout/layout';
 import { About } from './pages/about/About';
 import ArtDetail from './pages/art/ArtDetail';
 import ArtList from './pages/art/ArtList';
-import Gallery from './pages/art/Gallery';
+import Portfolio from './pages/art/Portfolio';
 import { Error } from './pages/general/Error';
 import { HealthCheck } from './pages/general/HealthCheck';
 import { NotFound } from './pages/general/NotFound';
@@ -51,8 +51,8 @@ const standardRoutes: RouteObject[] = [
         element: <About />,
       },
       {
-        path: '/gallery',
-        element: <Gallery />,
+        path: '/portfolio',
+        element: <Portfolio />,
       },
       {
         path: '/art/:id',

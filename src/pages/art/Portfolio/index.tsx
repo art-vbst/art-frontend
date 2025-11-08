@@ -5,7 +5,7 @@ import { ListPageLoader } from '~/components/ListPageLoader/ListPageLoader';
 import { ArtCardColumns } from '../ArtCardColumns';
 import { ArtViewer } from './ArtViewer';
 
-export default function Gallery() {
+export default function Portfolio() {
   const [openArtwork, setOpenArtwork] = React.useState<Artwork | null>(null);
 
   function fetchData() {
