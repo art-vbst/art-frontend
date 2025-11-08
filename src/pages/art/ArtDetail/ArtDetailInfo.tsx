@@ -22,8 +22,6 @@ export const ArtDetailInfo = ({ artwork }: { artwork: Artwork }) => {
     switch (artwork.status) {
       case ArtworkStatus.Available:
         return 'Add to Cart';
-      case ArtworkStatus.Pending:
-        return 'Pending';
       case ArtworkStatus.Sold:
         return 'Sold';
       case ArtworkStatus.NotForSale:
