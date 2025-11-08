@@ -16,6 +16,10 @@ export const ArtCardColumns = ({
   showInfo,
   spacing = 'md',
 }: ArtCardColumnsProps) => {
+  const artworksWithImages = useMemo(() => {
+    return artworks.filter((artwork) => artwork.images.length > 0);
+  }, [artworks]);
+
   const spacingClass = useMemo(() => {
     switch (spacing) {
       case 'sm':
@@ -44,10 +48,10 @@ export const ArtCardColumns = ({
   return (
     <div className={cn(spacingClassString, 'sm:flex-row')}>
       <div className={cn(spacingClassString, 'flex-1')}>
-        {artworks.filter((_, i) => i % 2 === 0).map(renderArtwork)}
+        {artworksWithImages.filter((_, i) => i % 2 === 0).map(renderArtwork)}
       </div>
       <div className={cn(spacingClassString, 'flex-1')}>
-        {artworks.filter((_, i) => i % 2 === 1).map(renderArtwork)}
+        {artworksWithImages.filter((_, i) => i % 2 === 1).map(renderArtwork)}
       </div>
     </div>
   );
