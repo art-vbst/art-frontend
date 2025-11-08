@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { Artwork } from '@art-vbst/art-types';
 import { ArtCard } from '~/pages/art/ArtCard';
 import { cn } from '~/utils/cn';
+import { useResizeListener } from '~/hooks/use-resize-listener';
+import { mobileBreakpoint } from '~/utils/breakpoints';
 
 type ArtCardColumnsProps = {
   artworks: Artwork[];
@@ -11,33 +13,71 @@ type ArtCardColumnsProps = {
 };
 
 export const ArtCardColumns = ({
-  artworks,
+  artworks: unfilteredArtworks,
   onClick,
   showInfo,
   spacing = 'md',
 }: ArtCardColumnsProps) => {
-  const artworksWithImages = useMemo(() => {
-    return artworks.filter((artwork) => artwork.images.length > 0);
+  const isMobile = useResizeListener(`(max-width: ${mobileBreakpoint})`);
+
+  const artworks = useMemo(() => {
+    return unfilteredArtworks.filter((artwork) => artwork.images.length > 0);
+  }, [unfilteredArtworks]);
+
+  const getAspectRatio = (artwork: Artwork): number => {
+    const image = artwork.images[0];
+    if (!image?.image_height || !image?.image_width) return 0;
+    return image.image_height / image.image_width;
+  };
+
+  const columnAssignments = useMemo(() => {
+    if (isMobile) {
+      return { column1: artworks, column2: [] };
+    }
+
+    const column1: Artwork[] = [];
+    const column2: Artwork[] = [];
+
+    let column1Height = 0;
+    let column2Height = 0;
+
+    artworks.forEach((artwork) => {
+      const aspectRatio = getAspectRatio(artwork);
+
+      if (column1Height <= column2Height) {
+        column1.push(artwork);
+        column1Height += aspectRatio;
+      } else {
+        column2.push(artwork);
+        column2Height += aspectRatio;
+      }
+    });
+
+    return { column1, column2 };
   }, [artworks]);
 
-  const spacingClass = useMemo(() => {
+  const spacingClassString = useMemo(() => {
+    const base = 'flex flex-col';
+
+    if (isMobile) {
+      return cn(base, 'gap-8');
+    }
+
     switch (spacing) {
       case 'sm':
-        return 'sm:gap-8';
+        return cn(base, 'gap-8');
       case 'md':
-        return 'sm:gap-16';
+        return cn(base, 'gap-16');
       case 'lg':
-        return 'sm:gap-24';
+        return cn(base, 'gap-24');
     }
-  }, [spacing]);
-
-  const spacingClassString = useMemo(() => {
-    return `flex flex-col gap-8 ${spacingClass}`;
-  }, [spacingClass]);
+  }, [spacing, isMobile]);
+  ``;
 
   const renderArtwork = (artwork: Artwork) => {
     return (
       <ArtCard
+        key={artwork.id}
         artwork={artwork}
         onClick={() => onClick?.(artwork)}
         showInfo={showInfo}
@@ -46,12 +86,12 @@ export const ArtCardColumns = ({
   };
 
   return (
-    <div className={cn(spacingClassString, 'sm:flex-row')}>
+    <div className={cn(spacingClassString, isMobile ? 'flex-col' : 'flex-row')}>
       <div className={cn(spacingClassString, 'flex-1')}>
-        {artworksWithImages.filter((_, i) => i % 2 === 0).map(renderArtwork)}
+        {columnAssignments.column1.map(renderArtwork)}
       </div>
       <div className={cn(spacingClassString, 'flex-1')}>
-        {artworksWithImages.filter((_, i) => i % 2 === 1).map(renderArtwork)}
+        {columnAssignments.column2.map(renderArtwork)}
       </div>
     </div>
   );

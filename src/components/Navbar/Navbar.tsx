@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useResizeListener } from '~/hooks/use-resize-listener';
 import { NavDesktop } from './NavDesktop';
 import { NavMobile } from './NavMobile';
@@ -10,11 +9,7 @@ export type NavLinkData = {
 };
 
 export const Navbar = ({ className }: { className?: string }) => {
-  const [mobile, setMobile] = React.useState(false);
-
-  useResizeListener(`(max-width: ${mobileBreakpoint})`, (queryMatches) => {
-    setMobile(queryMatches);
-  });
+  const isMobile = useResizeListener(`(max-width: ${mobileBreakpoint})`);
 
   const navlinks: NavLinkData[] = [
     { to: '/', label: 'Available Artwork' },
@@ -24,7 +19,7 @@ export const Navbar = ({ className }: { className?: string }) => {
 
   return (
     <div className={className}>
-      {mobile ? (
+      {isMobile ? (
         <NavMobile navlinks={navlinks} />
       ) : (
         <NavDesktop navlinks={navlinks} />

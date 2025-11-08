@@ -17,6 +17,7 @@ export const ArtCard = ({
 
   return (
     <div
+      id={artwork.id}
       className="flex w-full cursor-pointer flex-col items-center"
       onClick={onClick}
     >

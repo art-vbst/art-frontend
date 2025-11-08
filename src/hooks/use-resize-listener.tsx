@@ -1,22 +1,23 @@
 import * as React from 'react';
 
-export const useResizeListener = (
-  mediaQuery: string,
-  callback: (queryMatches: boolean) => void,
-) => {
+export const useResizeListener = (mediaQuery: string) => {
+  const [queryMatches, setQueryMatches] = React.useState(false);
+
   React.useEffect(() => {
     const query = window.matchMedia(mediaQuery);
 
     const handleChange = (e: MediaQueryListEvent) => {
-      callback(e.matches);
+      setQueryMatches(e.matches);
     };
 
-    callback(query.matches);
+    setQueryMatches(query.matches);
 
     query.addEventListener('change', handleChange);
 
     return () => {
       query.removeEventListener('change', handleChange);
     };
-  }, [mediaQuery, callback]);
+  }, [mediaQuery]);
+
+  return queryMatches;
 };

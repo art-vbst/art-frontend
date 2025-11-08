@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ShoppingBag } from 'lucide-react';
 import { useCartStore } from '~/data/stores';
 import { useResizeListener } from '~/hooks/use-resize-listener';
@@ -7,13 +6,10 @@ import { cn } from '~/utils/cn';
 
 export const CartBadge = () => {
   const { cart, setIsCartOpen } = useCartStore();
-  const [visible, setVisible] = React.useState(false);
 
-  useResizeListener(`(min-width: ${mobileBreakpoint})`, (queryMatches) => {
-    setVisible(queryMatches);
-  });
+  const isMobile = useResizeListener(`(min-width: ${mobileBreakpoint})`);
 
-  if (!visible) {
+  if (!isMobile) {
     return null;
   }
 
