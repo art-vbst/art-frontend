@@ -6,13 +6,13 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const baseClasses =
-  'py-3 px-6 rounded cursor-pointer transition-colors duration-200 ease border-none disabled:cursor-not-allowed';
+  'py-3 px-6 rounded cursor-pointer transition-colors duration-200 ease disabled:cursor-not-allowed';
 
 const variantClasses = {
   primary:
-    'bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-800 disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:active:bg-gray-500',
+    'bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-800 disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:active:bg-gray-500 border-none',
   outline:
-    'bg-transparent text-gray-dark border border-gray-dark hover:bg-gray-dark hover:text-white active:bg-gray-dark/90 disabled:text-[#aaa] disabled:border-[#aaa] disabled:cursor-not-allowed disabled:hover:bg-transparent',
+    'bg-transparent text-black border border-black hover:bg-gray-50 active:bg-gray-100',
 };
 
 export const Button = ({

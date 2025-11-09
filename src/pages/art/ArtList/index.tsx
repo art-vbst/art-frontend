@@ -22,8 +22,8 @@ export default function ArtList() {
   }
 
   return (
-    <ListPageLoader 
-      fetchData={fetchData} 
+    <ListPageLoader
+      fetchData={fetchData}
       children={renderContent}
       loadingSkeleton={<ArtListSkeleton />}
     />

@@ -73,7 +73,29 @@ export const CheckoutReturn = () => {
     setError('polling timeout');
   };
 
-  const getStatusDisplay = (): { title: string; message: React.ReactNode } => {
+  const homepageButton = (
+    <Button className="mt-8" onClick={() => navigate('/')} variant="outline">
+      Go to Homepage
+    </Button>
+  );
+
+  const supportButton = (
+    <Button
+      className="mt-8"
+      onClick={() =>
+        (window.location.href = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`)
+      }
+      variant="outline"
+    >
+      Contact Support
+    </Button>
+  );
+
+  const getStatusDisplay = (): {
+    title: string;
+    message: React.ReactNode;
+    showSupportButton?: boolean;
+  } => {
     if (!order && !error) {
       return {
         title: 'Loading order status...',
@@ -104,12 +126,14 @@ export const CheckoutReturn = () => {
           title: 'Order Canceled',
           message:
             'Your order has been canceled. If you did not request this cancellation, please contact support.',
+          showSupportButton: true,
         };
       default:
         return {
           title: 'Order Error',
           message:
             'An unknown error occurred. Please contact support for assistance.',
+          showSupportButton: true,
         };
     }
   };
@@ -140,10 +164,21 @@ export const CheckoutReturn = () => {
           </>
         )}
       </p>
-
-      <Button className="mt-8" onClick={() => navigate('/')}>
-        Go to Homepage
-      </Button>
+      <div className="mt-8 flex gap-4">
+        <Button onClick={() => navigate('/')} variant="outline">
+          Go to Homepage
+        </Button>
+        {statusDisplay.showSupportButton && (
+          <Button
+            variant="outline"
+            onClick={() =>
+              (window.location.href = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`)
+            }
+          >
+            Contact Support
+          </Button>
+        )}
+      </div>
     </PageContainer>
   );
 };

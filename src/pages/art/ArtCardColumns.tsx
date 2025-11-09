@@ -72,7 +72,6 @@ export const ArtCardColumns = ({
         return cn(base, 'gap-24');
     }
   }, [spacing, isMobile]);
-  ``;
 
   const renderArtwork = (artwork: Artwork) => {
     return (
@@ -90,9 +89,11 @@ export const ArtCardColumns = ({
       <div className={cn(spacingClassString, 'flex-1')}>
         {columnAssignments.column1.map(renderArtwork)}
       </div>
-      <div className={cn(spacingClassString, 'flex-1')}>
-        {columnAssignments.column2.map(renderArtwork)}
-      </div>
+      {columnAssignments.column2.length > 0 && (
+        <div className={cn(spacingClassString, 'flex-1')}>
+          {columnAssignments.column2.map(renderArtwork)}
+        </div>
+      )}
     </div>
   );
 };

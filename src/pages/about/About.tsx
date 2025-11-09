@@ -6,8 +6,8 @@ export const About = () => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
 
   return (
-    <div className="mx-auto max-w-5xl">
-      <div className="mb-12 flex flex-col gap-8 md:flex-row">
+    <div className="mx-auto flex max-w-5xl flex-col gap-12 sm:gap-16">
+      <div className="flex flex-col gap-12 md:flex-row">
         <div className="flex-1">
           {!imageLoaded && (
             <Skeleton className="w-full rounded" aspectRatio="569/319" />
