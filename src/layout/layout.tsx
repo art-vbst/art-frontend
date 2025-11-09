@@ -11,7 +11,7 @@ export const Layout = () => {
   useValidateCart();
 
   return (
-    <div className="relative flex min-h-dvh w-full flex-col">
+    <div className="relative flex min-h-svh w-full flex-col">
       <Navbar className="sticky top-0 z-10 mb-6 w-full sm:static sm:top-auto sm:mb-0 md:mb-6" />
       <Cart />
       <CartBadge />
