@@ -1,26 +1,23 @@
 import { AxiosResponse } from 'axios';
-import { Spinner } from '../Spinner/Spinner';
 import { usePageData } from '~/hooks/use-page-data';
 
 type ListPageLoaderProps<T> = {
   fetchData: () => Promise<AxiosResponse<T>>;
   children: (data: T) => React.ReactNode;
   emptyMessage?: string;
+  loadingSkeleton?: React.ReactNode;
 };
 
 export function ListPageLoader<T extends any[] | null>({
   fetchData,
   children,
   emptyMessage = 'No items found',
+  loadingSkeleton,
 }: ListPageLoaderProps<T>) {
   const { data, loading } = usePageData<T>(() => fetchData());
 
   if (loading) {
-    return (
-      <div className="flex justify-center pt-8">
-        <Spinner />
-      </div>
-    );
+    return <>{loadingSkeleton}</>;
   }
 
   if (!data || !data.length) {

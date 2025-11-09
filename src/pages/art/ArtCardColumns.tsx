@@ -54,7 +54,7 @@ export const ArtCardColumns = ({
     });
 
     return { column1, column2 };
-  }, [artworks]);
+  }, [artworks, isMobile]);
 
   const spacingClassString = useMemo(() => {
     const base = 'flex flex-col';

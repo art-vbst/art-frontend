@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ArtworkModel } from '~/api/models';
 import { Artwork } from '@art-vbst/art-types';
 import { ListPageLoader } from '~/components/ListPageLoader/ListPageLoader';
+import { ArtListSkeleton } from '~/components/Skeleton/ArtListSkeleton';
 import { ArtCardColumns } from '../ArtCardColumns';
 import { ArtViewer } from './ArtViewer';
 
@@ -30,5 +31,11 @@ export default function Portfolio() {
     );
   }
 
-  return <ListPageLoader fetchData={fetchData} children={renderContent} />;
+  return (
+    <ListPageLoader 
+      fetchData={fetchData} 
+      children={renderContent}
+      loadingSkeleton={<ArtListSkeleton showInfo={false} spacing="sm" />}
+    />
+  );
 }

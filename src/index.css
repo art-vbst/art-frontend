@@ -3,6 +3,7 @@
 html {
   font-family: 'Montserrat', sans-serif;
   padding: unset;
+  scrollbar-gutter: stable;
 }
 
 html:has(#cart) {
@@ -14,14 +15,23 @@ body {
 }
 
 @theme {
-  --font-family-sans: 'Montserrat', sans-serif;
-  --font-family-mono: 'Roboto Mono', monospace;
-
   --breakpoint-xs: 476px;
   --breakpoint-sm: 641px;
   --breakpoint-md: 769px;
   --breakpoint-lg: 1025px;
   --breakpoint-xl: 1281px;
+
+  --color-primary: #64349f;
+  --color-primary-50: #f5f0fa;
+  --color-primary-100: #ebe0f5;
+  --color-primary-200: #d7c1eb;
+  --color-primary-300: #c3a2e1;
+  --color-primary-400: #af83d7;
+  --color-primary-500: #9b64cd;
+  --color-primary-600: #8745c3;
+  --color-primary-700: #7326b9;
+  --color-primary-800: #64349f;
+  --color-primary-900: #4d2880;
 
   @keyframes slideFromTop {
     from {

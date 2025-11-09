@@ -15,7 +15,7 @@ export const CartBadge = () => {
 
   return (
     <button
-      className="fixed top-4 right-4 z-5 cursor-pointer rounded-full border border-gray-200 bg-white p-3 shadow-sm"
+      className="fixed top-4 right-5 z-5 cursor-pointer rounded-full border border-gray-200 bg-white p-3 shadow-sm"
       onClick={() => setIsCartOpen(true)}
     >
       <ShoppingBag className="text-gray-light h-5 w-5" />
@@ -41,7 +41,7 @@ const CartBadgeCount = ({
   return (
     <div
       className={cn(
-        'flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 text-white',
+        'bg-primary-600 flex h-4 w-4 items-center justify-center rounded-full text-white',
         className,
       )}
     >

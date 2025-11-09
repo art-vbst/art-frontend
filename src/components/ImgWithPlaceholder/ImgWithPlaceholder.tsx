@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from '@art-vbst/art-types';
 import { cn } from '~/utils/cn';
-import { ShimmerPlaceholder } from '../ShimmerPlaceholder/ShimmerPlaceholder';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 type ImgWithPlaceholderProps = {
   image: Image;
@@ -22,7 +22,7 @@ export const ImgWithPlaceholder = ({
   return (
     <div className="relative w-full">
       {!srcLoaded && width && height && (
-        <ShimmerPlaceholder width={width} height={height} />
+        <Skeleton className="w-full" aspectRatio={`${width}/${height}`} />
       )}
       <img
         alt={alt}

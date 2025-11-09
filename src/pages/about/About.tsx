@@ -1,15 +1,17 @@
 import * as React from 'react';
 import about_img from '~/assets/cc65d761-1ea5-41c6-a9fe-c14d4a5d0ab9.jpg';
-import { ShimmerPlaceholder } from '~/components/ShimmerPlaceholder/ShimmerPlaceholder';
+import { Skeleton } from '~/components/Skeleton/Skeleton';
 
 export const About = () => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
 
   return (
-    <div className="mx-auto max-w-6xl p-8">
+    <div className="mx-auto max-w-5xl">
       <div className="mb-12 flex flex-col gap-8 md:flex-row">
         <div className="flex-1">
-          {!imageLoaded && <ShimmerPlaceholder width={569} height={319} />}
+          {!imageLoaded && (
+            <Skeleton className="w-full rounded" aspectRatio="569/319" />
+          )}
           <img
             src={about_img}
             alt="Violet Bergeson"
@@ -33,7 +35,7 @@ export const About = () => {
           </a>
         </div>
       </div>
-      <div className="flex flex-col gap-12 md:flex-row">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">Biography</h3>
           <p className="text-gray-light text-sm leading-relaxed">

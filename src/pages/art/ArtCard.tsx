@@ -47,7 +47,7 @@ const ArtCardInfo = ({ artwork }: { artwork: Artwork }) => {
 const StatusText = ({ artwork }: { artwork: Artwork }) => {
   switch (artwork.status) {
     case ArtworkStatus.ComingSoon:
-      return <p className="mt-4 text-blue-600">Coming Soon!</p>;
+      return <p className="text-primary mt-4">Coming Soon!</p>;
     default:
       return null;
   }
