@@ -14,7 +14,7 @@ const NavLinkWithUnderline = ({ to, label }: { to: string; label: string }) => {
     <NavLink
       to={to}
       className={cn(
-        'text-gray-light relative text-sm font-medium transition-colors',
+        'text-gray-light relative font-medium transition-colors',
         isActive && 'text-black',
       )}
     >
@@ -37,7 +37,7 @@ export const NavDesktop = ({ navlinks }: NavDesktopProps) => {
   return (
     <div className="flex w-full flex-col items-center gap-6 py-12">
       <h1
-        className="text-center text-3xl font-medium"
+        className="text-center text-4xl font-medium"
         style={{ color: '#64349f' }}
       >
         Violet Bergeson Art

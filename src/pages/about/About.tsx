@@ -22,14 +22,12 @@ export const About = () => {
         </div>
         <div className="flex flex-1 flex-col gap-2">
           <h2 className="text-xl font-medium">Violet Bergeson</h2>
-          <p className="text-gray-light mt-4 text-sm">
-            Connect with me on Instagram!
-          </p>
+          <p className="text-gray-light mt-4">Connect with me on Instagram!</p>
           <a
             href="https://www.instagram.com/violetbergeson.art"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium"
+            className="font-medium"
           >
             @violetbergeson.art
           </a>
@@ -38,7 +36,7 @@ export const About = () => {
       <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">Biography</h3>
-          <p className="text-gray-light text-sm leading-relaxed">
+          <p className="text-gray-light leading-relaxed">
             I was born and raised in Canada, near the rocky mountains. As an
             adult I have lived in several states including Hawaii, Louisiana,
             Virginia, and Texas. While there were things I enjoyed about each of
@@ -49,7 +47,7 @@ export const About = () => {
         </div>
         <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">My Beginnings in Art</h3>
-          <p className="text-gray-light text-sm leading-relaxed">
+          <p className="text-gray-light leading-relaxed">
             I have always loved to draw and remember being very inspired as a 5
             year old, overhearing a proud grandma brag about how her grandson
             could draw whatever he wanted just from his imagination. As a teen I
@@ -61,7 +59,7 @@ export const About = () => {
         </div>
         <div className="flex flex-1 flex-col gap-4">
           <h3 className="text-xl font-semibold">Recent Developments</h3>
-          <p className="text-gray-light text-sm leading-relaxed">
+          <p className="text-gray-light leading-relaxed">
             I started studying art more seriously in 2022 after my youngest son
             was born. I've had the privilege of learning from artists like Emily
             Fox King, Andrew Payne, and Kirk Richards at the J. Kirk Richards

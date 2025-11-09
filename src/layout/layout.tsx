@@ -11,7 +11,7 @@ export const Layout = () => {
 
   return (
     <div className="relative flex min-h-dvh w-full flex-col">
-      <Navbar className="sticky top-0 z-10 mb-6 w-full bg-white sm:static sm:top-auto sm:mb-0" />
+      <Navbar className="sticky top-0 z-10 mb-6 w-full sm:static sm:top-auto sm:mb-0" />
       <Cart />
       <CartBadge />
       <div className="flex w-full flex-1 flex-col items-center px-5 pb-16">

@@ -59,7 +59,7 @@ const CartBodyItem = ({
     return (
       <div className="flex flex-1 flex-col gap-2">
         <h3
-          className="cursor-pointer font-medium"
+          className="cursor-pointer text-lg font-medium"
           onClick={() => handleItemClick(item)}
         >
           {item.title}
@@ -74,7 +74,7 @@ const CartBodyItem = ({
   function renderItemRemove() {
     return (
       <button
-        className="cursor-pointer text-sm text-red-600"
+        className="cursor-pointer text-red-600"
         onClick={() => removeFromCart(item.id)}
       >
         <Trash className="h-4 w-4" />

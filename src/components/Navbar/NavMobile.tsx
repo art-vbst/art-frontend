@@ -30,7 +30,7 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
         </h2>
         <div className="flex items-center gap-6 pr-1">
           <button className="relative cursor-pointer" onClick={handleCartOpen}>
-            <ShoppingBag className="text-gray-light h-5 w-5" />
+            <ShoppingBag className="text-gray-light h-6 w-6" />
             {cart.length > 0 && (
               <div className="bg-primary-600 absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full text-white">
                 <p className="text-[9px] font-semibold">{cart.length}</p>
@@ -42,9 +42,9 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="h-5 w-5" />
+              <X className="h-6 w-6" />
             ) : (
-              <Menu className="h-5 w-5" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
@@ -75,7 +75,7 @@ const NavMobileMenu = ({
         to={to}
         className={({ isActive }) =>
           cn(
-            'text-sm font-medium transition-colors',
+            'font-medium transition-colors',
             isActive ? 'text-black' : 'text-gray-400',
           )
         }

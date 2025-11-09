@@ -5,7 +5,7 @@ export const ArtDetailSkeleton = () => {
     <div className="flex w-full max-w-6xl flex-col gap-4 sm:gap-8">
       {/* Back button skeleton */}
       <div className="flex items-center gap-2">
-        <Skeleton width="80px" height="20px" className="rounded" />
+        <Skeleton width="140px" height="20px" className="rounded" />
       </div>
 
       <div className="flex w-full flex-col gap-8 lg:flex-row lg:gap-16">

@@ -6,7 +6,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const baseClasses =
-  'py-3 px-6 rounded text-sm cursor-pointer transition-colors duration-200 ease border-none disabled:cursor-not-allowed';
+  'py-3 px-6 rounded cursor-pointer transition-colors duration-200 ease border-none disabled:cursor-not-allowed';
 
 const variantClasses = {
   primary:

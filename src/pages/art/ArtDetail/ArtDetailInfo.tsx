@@ -45,8 +45,8 @@ export const ArtDetailInfo = ({ artwork }: { artwork: Artwork }) => {
   }
 
   return (
-    <div className="flex flex-col gap-6 text-sm text-gray-600">
-      <h1 className="text-2xl font-normal text-gray-900">{artwork.title}</h1>
+    <div className="flex flex-col gap-6 text-gray-600">
+      <h1 className="text-3xl font-medium text-gray-900">{artwork.title}</h1>
       <p className="font-medium text-gray-900">
         {centsToDollarString(artwork.price_cents)}
       </p>

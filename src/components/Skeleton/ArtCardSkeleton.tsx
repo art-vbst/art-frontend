@@ -13,13 +13,13 @@ export const ArtCardSkeleton = ({ showInfo = true }: ArtCardSkeletonProps) => {
       {showInfo && (
         <>
           {/* Title */}
-          <div className="mt-6 w-3/4">
-            <SkeletonText className="h-8" />
+          <div className="mt-6 w-1/2">
+            <SkeletonText className="!h-8" />
           </div>
 
           {/* Price */}
           <div className="mt-2 w-24">
-            <SkeletonText className="h-4" />
+            <SkeletonText className="!h-6" />
           </div>
         </>
       )}

@@ -39,7 +39,7 @@ const ArtCardInfo = ({ artwork }: { artwork: Artwork }) => {
     <>
       <h3 className="mt-6 text-center text-2xl font-semibold">{titleString}</h3>
       <StatusText artwork={artwork} />
-      <p className="text-gray-light mt-2 text-sm">{price}</p>
+      <p className="text-gray-light mt-2">{price}</p>
     </>
   );
 };

@@ -15,10 +15,10 @@ export const CartBadge = () => {
 
   return (
     <button
-      className="fixed top-4 right-5 z-5 cursor-pointer rounded-full border border-gray-200 bg-white p-3 shadow-sm"
+      className="fixed top-4 right-5 z-10 cursor-pointer rounded-full border border-gray-200 bg-white p-3 shadow-sm"
       onClick={() => setIsCartOpen(true)}
     >
-      <ShoppingBag className="text-gray-light h-5 w-5" />
+      <ShoppingBag className="text-gray-light h-6 w-6" />
       <CartBadgeCount
         count={cart.length}
         className="absolute -top-0.5 -left-0.5"
