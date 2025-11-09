@@ -21,16 +21,10 @@ export const ArtListSkeleton = ({
   const column1 = items.filter((_, i) => i % 2 === 0);
   const column2 = items.filter((_, i) => i % 2 === 1);
 
-  const spacingClassString = cn(
-    'flex flex-col',
-    isMobile
-      ? 'gap-8'
-      : spacing === 'sm'
-        ? 'gap-8'
-        : spacing === 'md'
-          ? 'gap-16'
-          : 'gap-24',
-  );
+  const spacingClassString = cn('flex flex-col gap-8', {
+    'md:gap-16': spacing === 'md',
+    'md:gap-24': spacing === 'lg',
+  });
 
   return (
     <div className={cn(spacingClassString, isMobile ? 'flex-col' : 'flex-row')}>

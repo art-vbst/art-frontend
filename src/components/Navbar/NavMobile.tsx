@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { NavLinkData } from './Navbar';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { cn } from '~/utils/cn';
@@ -10,6 +10,8 @@ type NavMobileProps = {
 };
 
 export const NavMobile = ({ navlinks }: NavMobileProps) => {
+  const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { cart, setIsCartOpen } = useCartStore();
 
@@ -25,7 +27,10 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
           isMenuOpen ? 'shadow-none' : 'shadow-sm',
         )}
       >
-        <h2 className="text-primary text-center text-2xl font-medium">
+        <h2
+          className="text-primary cursor-pointer text-center text-2xl font-medium"
+          onClick={() => navigate('/')}
+        >
           Violet Bergeson Art
         </h2>
         <div className="flex items-center gap-6 pr-1">

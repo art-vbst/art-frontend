@@ -1,4 +1,4 @@
-import { NavLink, useMatch } from 'react-router-dom';
+import { NavLink, useMatch, useNavigate } from 'react-router-dom';
 import { NavLinkData } from './Navbar';
 import { cn } from '~/utils/cn';
 
@@ -30,6 +30,8 @@ const NavLinkWithUnderline = ({ to, label }: { to: string; label: string }) => {
 };
 
 export const NavDesktop = ({ navlinks }: NavDesktopProps) => {
+  const navigate = useNavigate();
+
   function renderNavLink(to: string, label: string) {
     return <NavLinkWithUnderline key={to} to={to} label={label} />;
   }
@@ -37,8 +39,8 @@ export const NavDesktop = ({ navlinks }: NavDesktopProps) => {
   return (
     <div className="flex w-full flex-col items-center gap-6 py-12">
       <h1
-        className="text-center text-4xl font-medium"
-        style={{ color: '#64349f' }}
+        className="text-primary cursor-pointer text-center text-4xl font-medium"
+        onClick={() => navigate('/')}
       >
         Violet Bergeson Art
       </h1>

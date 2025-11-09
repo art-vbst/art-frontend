@@ -56,22 +56,10 @@ export const ArtCardColumns = ({
     return { column1, column2 };
   }, [artworks, isMobile]);
 
-  const spacingClassString = useMemo(() => {
-    const base = 'flex flex-col';
-
-    if (isMobile) {
-      return cn(base, 'gap-8');
-    }
-
-    switch (spacing) {
-      case 'sm':
-        return cn(base, 'gap-8');
-      case 'md':
-        return cn(base, 'gap-16');
-      case 'lg':
-        return cn(base, 'gap-24');
-    }
-  }, [spacing, isMobile]);
+  const spacingClassString = cn('flex flex-col gap-8', {
+    'md:gap-16': spacing === 'md',
+    'md:gap-24': spacing === 'lg',
+  });
 
   const renderArtwork = (artwork: Artwork) => {
     return (
