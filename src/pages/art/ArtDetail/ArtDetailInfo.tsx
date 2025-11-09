@@ -55,7 +55,7 @@ export const ArtDetailInfo = ({ artwork }: { artwork: Artwork }) => {
       <p>Size: {getSizeString(artwork.width_inches, artwork.height_inches)}</p>
       <p>{getArtistTimestamp('Violet Bergeson', artwork.painting_year)}</p>
       <Button
-        className="mt-4 self-start"
+        className="my-4 self-start"
         onClick={handleAddToCart}
         disabled={artworkInCart || artwork.status !== ArtworkStatus.Available}
       >

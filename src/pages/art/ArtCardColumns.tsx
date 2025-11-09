@@ -89,7 +89,7 @@ export const ArtCardColumns = ({
       <div className={cn(spacingClassString, 'flex-1')}>
         {columnAssignments.column1.map(renderArtwork)}
       </div>
-      {columnAssignments.column2.length > 0 && (
+      {!isMobile && (
         <div className={cn(spacingClassString, 'flex-1')}>
           {columnAssignments.column2.map(renderArtwork)}
         </div>
