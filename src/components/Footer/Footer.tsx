@@ -1,6 +1,33 @@
 import { ChevronsUp, Github, Instagram, Mail } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export const Footer = () => {
+  const [scrollUpVisible, setScrollUpVisible] = useState(false);
+  const [bodyScrollable, setBodyScrollable] = useState(false);
+
+  const scrollUpVisibleTimeoutRef = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
+
+  useEffect(() => {
+    scrollUpVisibleTimeoutRef.current = setTimeout(() => {
+      setScrollUpVisible(true);
+    }, 5000);
+
+    const observer = new ResizeObserver(() => {
+      const scrollable = document.body.scrollHeight > window.innerHeight;
+      setBodyScrollable(scrollable);
+    });
+
+    observer.observe(document.body);
+
+    return () => {
+      scrollUpVisibleTimeoutRef.current &&
+        clearTimeout(scrollUpVisibleTimeoutRef.current);
+      observer.disconnect();
+    };
+  }, []);
+
   const footerIcons = [
     {
       icon: <Github className="h-5 w-5" />,
@@ -29,13 +56,15 @@ export const Footer = () => {
           ))}
         </div>
       </div>
-      <button
-        className="cursor-pointer rounded-full border-none bg-gray-50 bg-transparent p-2 transition-colors duration-200 hover:bg-gray-100"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Scroll to top"
-      >
-        <ChevronsUp className="h-6 w-6 text-gray-400 sm:h-7 sm:w-7" />
-      </button>
+      {scrollUpVisible && bodyScrollable && (
+        <button
+          className="animate-in fade-in cursor-pointer rounded-full border-none bg-gray-50 bg-transparent p-2 transition-all duration-200 hover:bg-gray-100"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+        >
+          <ChevronsUp className="h-6 w-6 text-gray-400 sm:h-7 sm:w-7" />
+        </button>
+      )}
     </div>
   );
 };
