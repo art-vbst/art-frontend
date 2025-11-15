@@ -12,10 +12,16 @@ export default function ArtDetail() {
     return <NotFound />;
   }
 
-  const { data, loading } = usePageData(() => ArtworkModel.get(artworkId));
+  const { data, loading, hasLoaded } = usePageData(() =>
+    ArtworkModel.get(artworkId),
+  );
 
   if (loading) {
     return <ArtDetailSkeleton />;
+  }
+
+  if (!hasLoaded) {
+    return null;
   }
 
   if (!data) {

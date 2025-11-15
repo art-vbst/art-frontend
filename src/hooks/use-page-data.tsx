@@ -1,30 +1,47 @@
 import * as React from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useMinimumLoadTime } from './use-minimum-load-time';
 import { ApiError, ServerError } from '~/api/errors';
+
+const SKELETON_DELAY_MS = 150;
 
 export function usePageData<T>(fetchData: () => Promise<AxiosResponse<T>>) {
   const [data, setData] = React.useState<T | null>(null);
   const [hasLoaded, setHasLoaded] = React.useState(false);
-
-  const { loading, setLoading } = useMinimumLoadTime();
+  const [showSkeleton, setShowSkeleton] = React.useState(false);
 
   React.useEffect(() => {
-    void performRequest();
-  }, []);
+    let cancelled = false;
 
-  async function performRequest() {
-    try {
-      setLoading(true);
-      const res = await fetchData();
-      setData(res.data);
-    } catch (err: unknown) {
-      handleError(err);
-    } finally {
-      setHasLoaded(true);
-      setLoading(false);
+    const skeletonTimeout = window.setTimeout(() => {
+      if (!cancelled) {
+        setShowSkeleton(true);
+      }
+    }, SKELETON_DELAY_MS);
+
+    async function performRequest() {
+      try {
+        const res = await fetchData();
+        if (cancelled) return;
+        setData(res.data);
+      } catch (err: unknown) {
+        if (!cancelled) {
+          handleError(err);
+        }
+      } finally {
+        if (cancelled) return;
+        setHasLoaded(true);
+        setShowSkeleton(false);
+        window.clearTimeout(skeletonTimeout);
+      }
     }
-  }
+
+    void performRequest();
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(skeletonTimeout);
+    };
+  }, []);
 
   const handleError = (err: unknown) => {
     if (err instanceof AxiosError) {
@@ -34,7 +51,7 @@ export function usePageData<T>(fetchData: () => Promise<AxiosResponse<T>>) {
     throw new ServerError('an unknown error occurred');
   };
 
-  const effectiveLoading = loading || !hasLoaded;
+  const loading = !hasLoaded && showSkeleton;
 
-  return { data, loading: effectiveLoading, hasLoaded };
+  return { data, loading, hasLoaded };
 }

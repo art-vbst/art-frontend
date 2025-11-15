@@ -14,10 +14,14 @@ export function ListPageLoader<T extends any[] | null>({
   emptyMessage = 'No items found',
   loadingSkeleton,
 }: ListPageLoaderProps<T>) {
-  const { data, loading } = usePageData<T>(() => fetchData());
+  const { data, loading, hasLoaded } = usePageData<T>(() => fetchData());
 
   if (loading) {
     return <>{loadingSkeleton}</>;
+  }
+
+  if (!hasLoaded) {
+    return <div className="mt-16 h-10" />;
   }
 
   if (!data || !data.length) {
