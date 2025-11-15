@@ -15,10 +15,6 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { cart, setIsCartOpen } = useCartStore();
 
-  function handleCartOpen() {
-    setIsCartOpen(true);
-  }
-
   return (
     <div className="w-full">
       <div
@@ -29,12 +25,18 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
       >
         <h2
           className="text-primary cursor-pointer text-center text-2xl font-medium"
-          onClick={() => navigate('/')}
+          onClick={() => {
+            navigate('/');
+            setIsMenuOpen(false);
+          }}
         >
           Violet Bergeson Art
         </h2>
         <div className="flex items-center gap-6 pr-1">
-          <button className="relative cursor-pointer" onClick={handleCartOpen}>
+          <button
+            className="relative cursor-pointer"
+            onClick={() => setIsCartOpen(true)}
+          >
             <ShoppingBag className="text-gray-light h-6 w-6" />
             {cart.length > 0 && (
               <div className="bg-primary-600 absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full text-white">
