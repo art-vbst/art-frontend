@@ -16,19 +16,22 @@ export const ImgWithPlaceholder = ({
 }: ImgWithPlaceholderProps) => {
   const width = image.image_width;
   const height = image.image_height;
-
   const [srcLoaded, setSrcLoaded] = React.useState(false);
 
   return (
-    <div className="relative w-full">
-      {!srcLoaded && width && height && (
-        <Skeleton className="w-full" aspectRatio={`${width}/${height}`} />
-      )}
+    <div
+      className="relative w-full"
+      style={{ aspectRatio: `${width}/${height}` }}
+    >
+      <Skeleton className="absolute inset-0 -z-1 h-full w-full" />
       <img
         alt={alt}
         src={image.image_url}
         onLoad={() => setSrcLoaded(true)}
-        className={cn('w-full object-cover', srcLoaded ? 'block' : 'hidden')}
+        className={cn(
+          'h-full w-full object-cover transition-opacity duration-150',
+          srcLoaded ? 'opacity-100' : 'opacity-0',
+        )}
       />
       {srcLoaded && children}
     </div>
