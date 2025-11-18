@@ -4,6 +4,7 @@ import { NavLinkData } from './Navbar';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { cn } from '~/utils/cn';
 import { useCartStore } from '~/data/stores';
+import logo from '~/assets/logo.png';
 
 type NavMobileProps = {
   navlinks: NavLinkData[];
@@ -19,19 +20,13 @@ export const NavMobile = ({ navlinks }: NavMobileProps) => {
     <div className="w-full">
       <div
         className={cn(
-          'relative z-15 flex w-full items-center justify-between bg-white px-6 py-8',
+          'relative z-15 flex w-full items-center justify-between bg-white px-6 py-6',
           isMenuOpen ? 'shadow-none' : 'shadow-sm',
         )}
       >
-        <h2
-          className="text-primary cursor-pointer text-center text-2xl font-medium"
-          onClick={() => {
-            navigate('/');
-            setIsMenuOpen(false);
-          }}
-        >
-          Violet Bergeson Art
-        </h2>
+        <div onClick={() => navigate('/')} className="h-12 cursor-pointer">
+          <img src={logo} alt="Violet Bergeson Art" className="h-full w-auto" />
+        </div>
         <div className="flex items-center gap-6 pr-1">
           <button
             className="relative cursor-pointer"

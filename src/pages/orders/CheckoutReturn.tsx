@@ -73,24 +73,6 @@ export const CheckoutReturn = () => {
     setError('polling timeout');
   };
 
-  const homepageButton = (
-    <Button className="mt-8" onClick={() => navigate('/')} variant="outline">
-      Go to Homepage
-    </Button>
-  );
-
-  const supportButton = (
-    <Button
-      className="mt-8"
-      onClick={() =>
-        (window.location.href = `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`)
-      }
-      variant="outline"
-    >
-      Contact Support
-    </Button>
-  );
-
   const getStatusDisplay = (): {
     title: string;
     message: React.ReactNode;

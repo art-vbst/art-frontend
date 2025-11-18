@@ -1,4 +1,4 @@
-import { ChevronsUp, Github, Instagram, Mail } from 'lucide-react';
+import { ChevronsUp, Instagram, Mail } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export const Footer = () => {
@@ -30,30 +30,37 @@ export const Footer = () => {
 
   const footerIcons = [
     {
-      icon: <Github className="h-5 w-5" />,
-      href: 'https://github.com/art-vbst/art-frontend',
-    },
-    {
-      icon: <Instagram className="h-5 w-5" />,
+      icon: <Instagram className="h-6 w-6" />,
       href: 'https://www.instagram.com/violetbergeson.art',
     },
     {
-      icon: <Mail className="h-5 w-5" />,
+      icon: <Mail className="h-6 w-6" />,
       href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`,
     },
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between gap-8 bg-gradient-to-b from-gray-50 to-transparent px-12 py-8 sm:flex-row sm:py-12">
-      <div className="flex flex-col items-center gap-4 sm:items-start">
-        <p className="text-center text-sm text-gray-400 sm:text-left">
-          &copy; {new Date().getFullYear()} Violet Bergeson. All rights
-          reserved.
-        </p>
-        <div className="flex items-center gap-4">
+    <div className="flex flex-col items-center justify-between gap-8 bg-gradient-to-b from-gray-50 to-transparent p-8 pt-12 sm:flex-row sm:p-12">
+      <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
+        <div className="flex items-center gap-6">
           {footerIcons.map((icon) => (
             <FooterIcon key={icon.href} icon={icon.icon} href={icon.href} />
           ))}
+        </div>
+        <div className="hidden h-4 w-0.5 bg-gray-200 sm:block" />
+        <div className="flex flex-col items-center gap-0.5 sm:items-start">
+          <p className="text-center text-sm text-gray-400 sm:text-left">
+            &copy; {new Date().getFullYear()} Violet Bergeson. All rights
+            reserved.
+          </p>
+          <a
+            href="https://github.com/art-vbst/art-frontend"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center text-[11px] text-gray-400 transition-colors duration-200 hover:text-gray-600 sm:text-left"
+          >
+            View Source
+          </a>
         </div>
       </div>
       {scrollUpVisible && bodyScrollable && (

@@ -1,9 +1,29 @@
 import { NavLink, useMatch, useNavigate } from 'react-router-dom';
 import { NavLinkData } from './Navbar';
 import { cn } from '~/utils/cn';
+import logo from '~/assets/logo.png';
 
 type NavDesktopProps = {
   navlinks: NavLinkData[];
+};
+
+export const NavDesktop = ({ navlinks }: NavDesktopProps) => {
+  const navigate = useNavigate();
+
+  function renderNavLink(to: string, label: string) {
+    return <NavLinkWithUnderline key={to} to={to} label={label} />;
+  }
+
+  return (
+    <div className="flex w-full flex-col items-center gap-4 py-8">
+      <div onClick={() => navigate('/')} className="h-22 cursor-pointer">
+        <img src={logo} alt="Violet Bergeson Art" className="h-full w-auto" />
+      </div>
+      <div className="flex items-center gap-12">
+        {navlinks.map((navlink) => renderNavLink(navlink.to, navlink.label))}
+      </div>
+    </div>
+  );
 };
 
 const NavLinkWithUnderline = ({ to, label }: { to: string; label: string }) => {
@@ -26,27 +46,5 @@ const NavLinkWithUnderline = ({ to, label }: { to: string; label: string }) => {
         )}
       />
     </NavLink>
-  );
-};
-
-export const NavDesktop = ({ navlinks }: NavDesktopProps) => {
-  const navigate = useNavigate();
-
-  function renderNavLink(to: string, label: string) {
-    return <NavLinkWithUnderline key={to} to={to} label={label} />;
-  }
-
-  return (
-    <div className="flex w-full flex-col items-center gap-6 py-12">
-      <h1
-        className="text-primary cursor-pointer text-center text-4xl font-medium"
-        onClick={() => navigate('/')}
-      >
-        Violet Bergeson Art
-      </h1>
-      <div className="flex items-center gap-12">
-        {navlinks.map((navlink) => renderNavLink(navlink.to, navlink.label))}
-      </div>
-    </div>
   );
 };
