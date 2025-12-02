@@ -50,7 +50,7 @@ export const ArtDetailInfo = ({ artwork }: { artwork: Artwork }) => {
       <p className="font-medium text-gray-900">
         {centsToDollarString(artwork.price_cents)}
       </p>
-      <p>Unframed original painting.</p>
+      {artwork.description && <p>{artwork.description}</p>}
       <p>Medium: {getMedium(artwork.medium)}</p>
       <p>Size: {getSizeString(artwork.width_inches, artwork.height_inches)}</p>
       <p>{getArtistTimestamp('Violet Bergeson', artwork.painting_year)}</p>

@@ -1,10 +1,14 @@
-const mediumChoices = [
-  { key: 'oil_panel', value: 'Oil on Panel' },
-  { key: 'acrylic_panel', value: 'Acrylic on Panel' },
-  { key: 'oil_mdf', value: 'Oil on MDF' },
-  { key: 'oil_paper', value: 'Oil on Oil Paper' },
-  { key: 'unknown', value: 'Unknown' },
-];
+const mediumDisplayMap = {
+  oil_on_panel: 'Oil on Panel',
+  acrylic_on_panel: 'Acrylic on Panel',
+  oil_on_mdf: 'Oil on MDF',
+  oil_on_oil_paper: 'Oil on Oil Paper',
+  clay_sculpture: 'Clay Sculpture',
+  plaster_sculpture: 'Plaster Sculpture',
+  ink_on_paper: 'Ink on Paper',
+  mixed_media_on_paper: 'Mixed Media on Paper',
+  unknown: 'Unknown',
+}
 
-export const getMedium = (medium: string) =>
-  mediumChoices.find((choice) => choice.key === medium)?.value || medium;
+export const getMedium = (medium: keyof typeof mediumDisplayMap) =>
+  mediumDisplayMap[medium] || medium;
